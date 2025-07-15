@@ -5,12 +5,12 @@
 <!-- ./end floating assets -->
 
 <!-- Common hero -->
-<section class="page-hero py-16">
-  <div class="container">
-    <div class="text-center">
-      <ul class="breadcrumb inline-flex h-8 items-center justify-center space-x-2 rounded-3xl bg-theme-light px-4 py-2">
-        <li class="leading-none text-dark">
-          <a class="inline-flex items-center text-primary" href="#">
+ <section class="py-20  text-center relative px-4">
+  <div class="max-w-4xl mx-auto">
+    
+    <!-- Breadcrumb -->
+    <div class="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-600">
+      <a class="inline-flex items-center text-primary" href="#">
             <svg class="mr-1.5" width="15" height="15" viewBox="0 0 16 16" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -19,89 +19,66 @@
             </svg>
             <span class="text-sm leading-none">Home</span>
           </a>
-        </li>
-        <li class="leading-none text-dark">
-          <span class="text-sm leading-none">/ About Us</span>
-        </li>
-      </ul>
+      <span>/</span>
+      <span class="text-gray-700">About Us</span>
     </div>
-    <div class="page-hero-content mx-auto max-w-[768px] text-center">
-      <h1 class="mb-5 mt-8">About our company</h1>
-      <p>
 
-        Welcome to our cutting-edge AI service provider firm. We specialize in offering the latest technologies and
-        tailored solutions to meet your specific needs. Our expertise spans MLOps and machine learning platform creation
-        on demand, ensuring seamless integration and efficient workflows for your projects.
+    <!-- Title -->
+    <h2 class="text-4xl font-bold text-gray-900 mb-6">
+      About Flowkon
+    </h2>
 
-        Additionally, we provide access to top-tier data scientists who are available to assist with your unique
-        requirements. Our team is dedicated to delivering innovative solutions that drive success and enable you to stay
-        ahead in the fast-paced world of AI and machine learning.
-      </p>
-      <div class="mt-11 justify-center sm:flex">
-        <a class="btn btn-outline-primary m-3 block min-w-[160px] sm:inline-block" href="#">Learn more</a>
-      </div>
-    </div>
-    <!-- <div class="counter mt-16">
-      <div class="row mx-0 rounded-[20px] bg-white px-10 shadow-lg lg:py-10">
-        <div class="border-border px-10 py-10 text-center sm:col-6 lg:col-3 lg:border-r lg:py-0">
-          <h2>
-            <span class="count">25M</span> <span class="text-[#A3A1FB]">+</span>
-          </h2>
-          <p>Customers</p>
-        </div>
-        <div class="border-border px-10 py-10 text-center sm:col-6 lg:col-3 lg:border-r lg:py-0">
-          <h2>
-            <span class="count">440M</span>
-            <span class="text-[#5EE2A0]">+</span>
-          </h2>
-          <p>Products available</p>
-        </div>
-        <div class="border-border px-10 py-10 text-center sm:col-6 lg:col-3 lg:border-r lg:py-0">
-          <h2>
-            <span class="count">50K</span> <span class="text-primary">+</span>
-          </h2>
-          <p>Online stores</p>
-        </div>
-        <div class="px-10 py-10 text-center sm:col-6 lg:col-3 lg:py-0">
-          <h2>
-            <span class="count">20K</span> <span class="text-[#FEC163]">+</span>
-          </h2>
-          <p>Transactions</p>
-        </div>
-      </div>
-    </div> -->
+    <!-- Description -->
+    <p class="text-lg text-gray-600 leading-relaxed mb-10">
+      At Flowkon, we engineer next-gen AI solutions tailored to your business needs. Our team excels in MLOps, ML engineering, and data science — delivering scalable, production-grade systems for data-driven success. From intelligent automation to real-time LinkedIn engagement pipelines, we help you accelerate your AI journey with precision, performance, and agility.
+    </p>
+
+    <!-- CTA -->
+    <!-- <a href="/about" class="inline-block rounded-full px-6 py-3 border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white transition">
+      Learn More
+    </a> -->
   </div>
 </section>
+
+
 <!-- end Common hero -->
 
 <!-- Gallery -->
 <section class="section">
   <div class="container">
+    <!-- Section Heading -->
     <div class="row justify-center text-center">
-      <div class="col-8">
-        <h2>We started with one single goal: empowering companies with cutting-edge AI technologies, MLOps solutions,
-          and expert data scientists on demand. </h2>
+      <div class="col-10 lg:col-8">
+        <h2 class="text-3xl font-bold text-gray-900 leading-snug">
+          Empowering Modern B2B Teams with <span class="text-[#036101]">AI-driven LinkedIn Automation</span> and On-Demand ML Expertise
+        </h2>
+        <p class="mt-4 text-gray-600 text-lg">
+          From campaign orchestration to profile insights, our mission is to simplify LinkedIn outreach through intelligent automation and powerful data infrastructure.
+        </p>
       </div>
     </div>
-    <div class="row mt-2.5">
+
+    <!-- Image Gallery -->
+    <div class="row mt-12">
       <div class="md:col-6">
         <div class="relative mt-8">
-          <img class="w-full object-cover" width="480" height="328" src="images/about/gallery-img-1.png" alt="" />
+          <img class="w-full rounded-xl shadow-lg object-cover" src="images/about/gallery-img-1.png" alt="AI Team Collaboration" />
         </div>
         <div class="relative mt-8">
-          <img class="w-full object-cover" width="480" height="274" src="images/about/gallery-img-2.png" alt="" />
-          <img class="absolute -bottom-5 -left-5 -z-[1]" src="images/shape-2.svg" alt="" />
+          <img class="w-full rounded-xl shadow-lg object-cover" src="images/about/gallery-img-2.png" alt="Data Science Workflow" />
+          <img class="absolute -bottom-5 -left-5 -z-[1] h-16 w-16" src="images/shape-2.svg" alt="" />
         </div>
       </div>
       <div class="md:col-6">
         <div class="relative mt-8">
-          <img class="w-full object-cover" width="480" height="540" src="images/about/gallery-img-3.png" alt="" />
+          <img class="w-full rounded-xl shadow-lg object-cover" src="images/about/gallery-img-3.png" alt="Machine Learning Ops in Action" />
           <img class="absolute -bottom-4 -right-5 -z-[1] h-16 w-16" src="images/shape.svg" alt="" />
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- End Gallery -->
 
 <!-- Works -->
@@ -109,171 +86,190 @@
   <div class="container">
     <div class="row items-center justify-between">
       <div class="md:col-5">
-        <h2 class="text-center md:text-left">
-          The Six Core Principles Driving <br />
-          Everything We Do
+        <h2 class="text-center md:text-left text-3xl font-bold text-gray-900 leading-snug">
+          The Six AI-First Principles <br /> Guiding Everything We Build
         </h2>
       </div>
-
     </div>
+
     <div class="row mt-14">
+      <!-- Principle 1 -->
       <div class="mb-8 sm:col-6 lg:col-4">
         <div class="rounded-xl bg-white p-6 shadow-lg lg:p-8">
           <div class="gradient-number relative inline-block">
-            <span class="bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">01</span>
+            <span class="bg-[#036101] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">01</span>
             <img src="images/gradient-number-bg.svg" alt="" />
           </div>
-          <h4 class="my-6">Innovation</h4>
-          <p>
-            Innovation drives our solutions, ensuring that we leverage the latest advancements in AI and machine
-            learning
-            to deliver cutting-edge technology to our clients.
+          <h4 class="my-6 font-semibold text-lg text-gray-900">AI-Powered Innovation</h4>
+          <p class="text-sm text-gray-600">
+            We infuse AI into every layer—from campaign creation to post-level analytics—to ensure your outreach stays ahead of the curve.
           </p>
         </div>
       </div>
+
+      <!-- Principle 2 -->
       <div class="mb-8 sm:col-6 lg:col-4">
         <div class="rounded-xl bg-white p-6 shadow-lg lg:p-8">
           <div class="gradient-number relative inline-block">
-            <span class="bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">02</span>
+            <span class="bg-[#036101] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">02</span>
             <img src="images/gradient-number-bg.svg" alt="" />
           </div>
-          <h4 class="my-6">Client-Centric Approach</h4>
-          <p>
-            We prioritize our clients' needs, tailoring our services to meet their specific challenges and objectives,
-            ensuring satisfaction and long-term partnerships.
+          <h4 class="my-6 font-semibold text-lg text-gray-900">User-First Design</h4>
+          <p class="text-sm text-gray-600">
+            Every feature—from drag-and-drop flows to LinkedIn inbox sync—is built with your workflow and results in mind.
           </p>
         </div>
       </div>
+
+      <!-- Principle 3 -->
       <div class="mb-8 sm:col-6 lg:col-4">
         <div class="rounded-xl bg-white p-6 shadow-lg lg:p-8">
           <div class="gradient-number relative inline-block">
-            <span class="bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">03</span>
+            <span class="bg-[#036101] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">03</span>
             <img src="images/gradient-number-bg.svg" alt="" />
           </div>
-          <h4 class="my-6">Expertise</h4>
-          <p>
-            Our team comprises highly skilled data scientists, engineers, and AI experts who bring extensive knowledge
-            and
-            experience to every project, guaranteeing top-quality outcomes.
+          <h4 class="my-6 font-semibold text-lg text-gray-900">Deep Expertise</h4>
+          <p class="text-sm text-gray-600">
+            Our ML engineers, data scientists, and product experts bring best-in-class talent to solve growth challenges in B2B engagement.
           </p>
         </div>
       </div>
+
+      <!-- Principle 4 -->
       <div class="mb-8 sm:col-6 lg:col-4">
         <div class="rounded-xl bg-white p-6 shadow-lg lg:p-8">
           <div class="gradient-number relative inline-block">
-            <span class="bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">04</span>
+            <span class="bg-[#036101] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">04</span>
             <img src="images/gradient-number-bg.svg" alt="" />
           </div>
-          <h4 class="my-6">Scalability</h4>
-          <p>
-            We design and implement scalable AI solutions that can grow with our clients' businesses, ensuring
-            sustainable
-            and efficient operations as they expand.
+          <h4 class="my-6 font-semibold text-lg text-gray-900">Scalable Automation</h4>
+          <p class="text-sm text-gray-600">
+            Built for scale—Flowkon’s systems handle thousands of personalized interactions across accounts with ease and compliance.
           </p>
         </div>
       </div>
+
+      <!-- Principle 5 -->
       <div class="mb-8 sm:col-6 lg:col-4">
         <div class="rounded-xl bg-white p-6 shadow-lg lg:p-8">
           <div class="gradient-number relative inline-block">
-            <span class="bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">05</span>
+            <span class="bg-[#036101] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">05</span>
             <img src="images/gradient-number-bg.svg" alt="" />
           </div>
-          <h4 class="my-6">Integrity and Transparency</h4>
-          <p>
-            We uphold the highest standards of integrity and transparency in all our dealings, building trust with our
-            clients through honest communication and ethical practices.
+          <h4 class="my-6 font-semibold text-lg text-gray-900">Transparent Intelligence</h4>
+          <p class="text-sm text-gray-600">
+            Our platform explains every decision—whether it’s lead scoring or sequence timing—ensuring you stay in control of the AI.
           </p>
         </div>
       </div>
+
+      <!-- Principle 6 -->
       <div class="mb-8 sm:col-6 lg:col-4">
         <div class="rounded-xl bg-white p-6 shadow-lg lg:p-8">
           <div class="gradient-number relative inline-block">
-            <span class="bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">06</span>
+            <span class="bg-[#036101] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">06</span>
             <img src="images/gradient-number-bg.svg" alt="" />
           </div>
-          <h4 class="my-6">Continuous Improvement</h4>
-          <p>
-            We are committed to continuous improvement, regularly refining our processes, technologies, and
-            methodologies
-            to stay ahead in the rapidly evolving AI landscape.
+          <h4 class="my-6 font-semibold text-lg text-gray-900">Relentless Optimization</h4>
+          <p class="text-sm text-gray-600">
+            We continuously refine flows, models, and outreach logic based on engagement data to maximize outcomes across markets.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- ./end Works -->
 
 <!-- Members -->
-<section class="section">
+<section class="section bg-gray-50 py-20">
   <div class="container">
-    <div class="row">
-      <div class="mx-auto text-center lg:col-6">
-        <h2>This is who we are</h2>
-        <p class="mt-4">
-          What sets us apart is our extraordinary team. Comprising industry-leading experts and passionate innovators,
-          we are committed to pushing the boundaries of what's possible. Together, we transform challenges into
-          opportunities and deliver exceptional results that drive success.
+    <div class="row justify-center text-center">
+      <div class="lg:col-7">
+        <h2 class="text-3xl font-bold text-gray-900">Meet the Minds Behind Flowkon</h2>
+        <p class="mt-4 text-gray-600">
+          A diverse group of AI engineers, data scientists, and innovators powering the future of LinkedIn automation and engagement.
         </p>
       </div>
     </div>
-    <div class="row mt-12 justify-center">
+
+    <div class="row mt-14 justify-center">
       <div class="lg:col-10">
-        <div class="row">
-          <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center">
-            <div class="member-avatar inline-flex justify-center">
-              <img class="rouded-full h-28 w-28" src="images/users/user-1.png" alt="" />
-            </div>
-            <div class="mt-6 w-full flex-1 rounded-xl bg-white py-8 px-4 shadow-lg">
-              <h5 class="font-primary">Samir Anand</h5>
-              <p class="mt-1.5">Machine Learning Engineer</p>
-            </div>
-          </div>
-          <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center">
-            <div class="member-avatar inline-flex justify-center">
-              <img class="rouded-full h-28 w-28" src="images/users/user-2.png" alt="" />
-            </div>
-            <div class="mt-6 w-full flex-1 rounded-xl bg-white py-8 px-4 shadow-lg">
-              <h5 class="font-primary">Sandeep Mishra</h5>
-              <p class="mt-1.5">Data Scientist</p>
+        <div class="row gap-y-10">
+          <!-- Single Member Card -->
+          <div class="sm:col-6 lg:col-4 flex justify-center">
+            <div class="group relative w-full max-w-xs rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition">
+              <div class="flex justify-center">
+                <img class="h-24 w-24 rounded-full border-4 border-white shadow-md" src="images/users/user-1.png" alt="Samir Anand" />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">Samir Anand</h5>
+                <span class="mt-1 block text-sm text-indigo-600 font-medium">Machine Learning Engineer</span>
+              </div>
             </div>
           </div>
-          <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center">
-            <div class="member-avatar inline-flex justify-center">
-              <img class="rouded-full h-28 w-28" src="images/users/user-3.png" alt="" />
-            </div>
-            <div class="mt-6 w-full flex-1 rounded-xl bg-white py-8 px-4 shadow-lg">
-              <h5 class="font-primary">Mohit Kumar</h5>
-              <p class="mt-1.5">Data Scientist</p>
-            </div>
-          </div>
-          <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center">
-            <div class="member-avatar inline-flex justify-center">
-              <img class="rouded-full h-28 w-28" src="images/users/user-5.png" alt="" />
-            </div>
-            <div class="mt-6 w-full flex-1 rounded-xl bg-white py-8 px-4 shadow-lg">
-              <h5 class="font-primary">Shivani Singh</h5>
-              <p class="mt-1.5">Data Engineer</p>
+
+          <div class="sm:col-6 lg:col-4 flex justify-center">
+            <div class="group relative w-full max-w-xs rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition">
+              <div class="flex justify-center">
+                <img class="h-24 w-24 rounded-full border-4 border-white shadow-md" src="images/users/user-2.png" alt="Sandeep Mishra" />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">Sandeep Mishra</h5>
+                <span class="mt-1 block text-sm text-indigo-600 font-medium">Data Scientist</span>
+              </div>
             </div>
           </div>
-          <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center">
-            <div class="member-avatar inline-flex justify-center">
-              <img class="rouded-full h-28 w-28" src="images/users/user-4.png" alt="" />
-            </div>
-            <div class="mt-6 w-full flex-1 rounded-xl bg-white py-8 px-4 shadow-lg">
-              <h5 class="font-primary">Sunny Yadav</h5>
-              <p class="mt-1.5">Data Engineer</p>
-            </div>
-          </div>
-          <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center">
-            <div class="member-avatar inline-flex justify-center">
-              <img class="rouded-full h-28 w-28" src="images/users/user-6.png" alt="" />
-            </div>
-            <div class="mt-6 w-full flex-1 rounded-xl bg-white py-8 px-4 shadow-lg">
-              <h5 class="font-primary">Atul Kumar</h5>
-              <p class="mt-1.5">Business Analyst</p>
+
+          <div class="sm:col-6 lg:col-4 flex justify-center">
+            <div class="group relative w-full max-w-xs rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition">
+              <div class="flex justify-center">
+                <img class="h-24 w-24 rounded-full border-4 border-white shadow-md" src="images/users/user-3.png" alt="Mohit Kumar" />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">Mohit Kumar</h5>
+                <span class="mt-1 block text-sm text-indigo-600 font-medium">Data Scientist</span>
+              </div>
             </div>
           </div>
+
+          <div class="sm:col-6 lg:col-4 flex justify-center">
+            <div class="group relative w-full max-w-xs rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition">
+              <div class="flex justify-center">
+                <img class="h-24 w-24 rounded-full border-4 border-white shadow-md" src="images/users/user-5.png" alt="Shivani Singh" />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">Shivani Singh</h5>
+                <span class="mt-1 block text-sm text-indigo-600 font-medium">Data Engineer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sm:col-6 lg:col-4 flex justify-center">
+            <div class="group relative w-full max-w-xs rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition">
+              <div class="flex justify-center">
+                <img class="h-24 w-24 rounded-full border-4 border-white shadow-md" src="images/users/user-4.png" alt="Sunny Yadav" />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">Sunny Yadav</h5>
+                <span class="mt-1 block text-sm text-indigo-600 font-medium">Data Engineer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sm:col-6 lg:col-4 flex justify-center">
+            <div class="group relative w-full max-w-xs rounded-xl bg-white p-6 shadow-md hover:shadow-xl transition">
+              <div class="flex justify-center">
+                <img class="h-24 w-24 rounded-full border-4 border-white shadow-md" src="images/users/user-6.png" alt="Atul Kumar" />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="text-lg font-semibold text-gray-900">Atul Kumar</h5>
+                <span class="mt-1 block text-sm text-indigo-600 font-medium">Business Analyst</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

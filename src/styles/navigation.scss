@@ -36,13 +36,13 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-link {
-  @apply block p-3 py-2 text-[15px] text-dark transition hover:text-primary md:px-2 lg:inline-block;
+  @apply block p-3 py-2 text-[15px] text-dark transition hover:text-[#036007] md:px-2 lg:inline-block;
 
   &.active {
     @apply relative;
 
     &::after {
-      @apply absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-tl content-[''];
+      @apply absolute bottom-0 left-2 right-2 h-0.5 bg-[#036101] content-[''];
     }
   }
 }
