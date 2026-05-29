@@ -23,7 +23,7 @@ var path = {
   // source paths
   src: {
     theme: "src/theme.json",
-    pages: "src/pages/*.html",
+    pages: "src/pages/**/*.html",
     partials: "src/partials/**/*.html",
     styles: "src/styles/*.scss",
     scripts: "src/scripts/*.js",
@@ -63,7 +63,7 @@ gulp.task("pages", function () {
       })
     )
     .pipe(comments(headerComments))
-    .pipe(gulp.dest(path.build.dir))
+    .pipe(gulp.dest(path.build.dir, { base: "src/pages" }))
     .pipe(
       bs.reload({
         stream: true,

@@ -1,0 +1,66 @@
+<!-- floating assets -->
+<img class="floating-bubble-1 absolute right-0 top-0 -z-[1]" src="images/floating-bubble-1.svg" alt="" />
+<img class="floating-bubble-2 absolute left-0 top-[387px] -z-[1]" src="images/floating-bubble-2.svg" alt="" />
+
+<!-- blog single -->
+<section class="section blog-single">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="mt-10 max-w-[810px] lg:col-9">
+        <h1 class="h2">LangGraph vs CrewAI vs AutoGen: Which Multi-Agent Framework Should You Use in 2026?</h1>
+        <div class="mt-6 mb-5 flex items-center space-x-2">
+          <div class="blog-author-avatar h-[58px] w-[58px] rounded-full border-2 border-primary p-0.5">
+            <img src="images/blog-author.png" alt="Bytolix Engineering Team" />
+          </div>
+          <ul class="ml-3">
+            <li class="font-medium text-dark">Bytolix Engineering Team</li>
+            <li class="text-sm">May 2026 · 12 min read</li>
+          </ul>
+        </div>
+
+        <p class="mb-6">If you're building multi-agent AI systems in 2026, you're almost certainly evaluating three frameworks: <strong>LangGraph</strong>, <strong>CrewAI</strong>, and <strong>AutoGen</strong>. They all let you build systems where multiple AI agents collaborate to complete complex tasks. But they take fundamentally different approaches — and choosing the wrong one will cost you weeks of refactoring.</p>
+
+        <p class="mb-6">At Bytolix, we've shipped multi-agent systems in production using all three. This is our honest engineering assessment of where each one excels, where it falls short, and when to use which.</p>
+
+        <h2 class="h3 mt-10 mb-4">The Quick Answer</h2>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">→</span><div><strong>LangGraph</strong> — Best for complex, stateful workflows where you need precise control over agent routing, loops, and conditional logic. Production-grade. Higher learning curve.</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">→</span><div><strong>CrewAI</strong> — Best for role-based agent teams where each agent has a defined persona, goal, and set of tools. Fast to prototype. Great for structured task delegation.</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">→</span><div><strong>AutoGen</strong> — Best for conversational multi-agent systems and research/coding workflows. Dynamic, flexible, but harder to make deterministic in production.</div></li>
+        </ul>
+
+        <h2 class="h3 mt-10 mb-4">LangGraph: The Production-Grade Choice</h2>
+        <p class="mb-4">LangGraph, built by the LangChain team, models agent workflows as a directed graph (or cyclic graph). Nodes are agent steps or tool calls. Edges define transitions — including conditional edges that route based on the output of previous steps.</p>
+        <p class="mb-4">This graph-based model makes LangGraph uniquely powerful for complex workflows that need explicit control: retries on failure, loops until a condition is met, parallel branches that merge, human-in-the-loop checkpoints, and persistent state across steps.</p>
+        <p class="mb-4"><strong>Where LangGraph wins:</strong> Financial reconciliation workflows, multi-step data pipelines, any workflow where the path through the agent system is non-linear or depends on runtime conditions.</p>
+        <p class="mb-6"><strong>Where it's harder:</strong> The graph abstraction has a learning curve. Defining state schemas, managing edges, and debugging graph traversal takes more upfront work than CrewAI. Not the fastest path to a demo.</p>
+
+        <h2 class="h3 mt-10 mb-4">CrewAI: Fast to Build, Great for Teams of Agents</h2>
+        <p class="mb-4">CrewAI organises agents as a "crew" — a team of agents, each with a role, goal, backstory, and set of tools. You define tasks and assign them to agents. The crew executes sequentially or in parallel, with agents able to delegate to each other.</p>
+        <p class="mb-4">The role-based abstraction is intuitive and maps well to how people already think about teams. A "Researcher" agent, a "Writer" agent, and a "QA" agent feel natural to define and reason about.</p>
+        <p class="mb-4"><strong>Where CrewAI wins:</strong> Content generation pipelines, research workflows, any use case where the mental model of "a team of specialists" fits naturally. Great for rapid prototyping and demos.</p>
+        <p class="mb-6"><strong>Where it's harder:</strong> Less control over state management and conditional routing than LangGraph. Can be opaque when agents go off-script. Less suited to highly deterministic production workflows.</p>
+
+        <h2 class="h3 mt-10 mb-4">AutoGen: Flexible, Conversational, Research-Oriented</h2>
+        <p class="mb-4">AutoGen, from Microsoft Research, takes a conversational approach to multi-agent systems. Agents communicate through message passing — you can have agents debate, ask each other questions, spawn sub-agents dynamically, and terminate conversations based on outcomes.</p>
+        <p class="mb-4"><strong>Where AutoGen wins:</strong> Research and coding workflows, scenarios where agents need to debate or verify each other's work, use cases where dynamic agent spawning adds value. Popular in academic and research settings.</p>
+        <p class="mb-6"><strong>Where it's harder:</strong> The conversational model can be harder to make deterministic and auditable in enterprise production. Debugging message chains is complex. Less community tooling than LangGraph.</p>
+
+        <h2 class="h3 mt-10 mb-4">Our Production Recommendation</h2>
+        <p class="mb-4">For enterprise production deployments, we default to <strong>LangGraph</strong>. The explicit state management, conditional routing, and checkpointing make it the most reliable choice when agents are executing consequential workflows — touching financial systems, CRM records, or customer communications.</p>
+        <p class="mb-4">For internal tools, prototypes, or workflows where "close enough" is fine, <strong>CrewAI</strong> lets you move faster. We often prototype in CrewAI and migrate critical paths to LangGraph.</p>
+        <p class="mb-6"><strong>AutoGen</strong> earns a place in our stack for code generation pipelines and research assistants where its conversational strengths outweigh the predictability tradeoffs.</p>
+
+        <h2 class="h3 mt-10 mb-4">The Framework Isn't the Hard Part</h2>
+        <p class="mb-4">After shipping multi-agent systems in production, the honest truth is that the framework choice matters less than the agent architecture design — the tool definitions, the state schema, the error handling, the evaluation harness, and the observability layer.</p>
+        <p class="mb-6">Any of the three frameworks can work for most enterprise use cases. The bigger differentiator is the engineering judgment about how to break a complex workflow into agent responsibilities, how to handle failures gracefully, and how to evaluate whether the system is actually working correctly in production.</p>
+
+        <div class="bg-theme-light rounded-xl p-8 mt-10">
+          <h3 class="mb-4">Working on a multi-agent system?</h3>
+          <p class="mb-4">Bytolix has shipped multi-agent orchestration systems using LangGraph, CrewAI, and AutoGen in enterprise production environments. If you're evaluating frameworks for a real use case, we're happy to share our engineering perspective.</p>
+          <a class="btn btn-primary" href="mailto:hello@bytolix.com">Talk to Our Engineering Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

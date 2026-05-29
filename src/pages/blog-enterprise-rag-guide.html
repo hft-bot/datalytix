@@ -1,0 +1,70 @@
+<!-- floating assets -->
+<img class="floating-bubble-1 absolute right-0 top-0 -z-[1]" src="images/floating-bubble-1.svg" alt="" />
+<img class="floating-bubble-2 absolute left-0 top-[387px] -z-[1]" src="images/floating-bubble-2.svg" alt="" />
+
+<section class="section blog-single">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="mt-10 max-w-[810px] lg:col-9">
+        <h1 class="h2">How to Build an Enterprise RAG System in 2026: Architecture, Pitfalls, and Production Lessons</h1>
+        <div class="mt-6 mb-5 flex items-center space-x-2">
+          <div class="blog-author-avatar h-[58px] w-[58px] rounded-full border-2 border-primary p-0.5">
+            <img src="images/blog-author.png" alt="Bytolix Engineering Team" />
+          </div>
+          <ul class="ml-3">
+            <li class="font-medium text-dark">Bytolix Engineering Team</li>
+            <li class="text-sm">May 2026 · 15 min read</li>
+          </ul>
+        </div>
+
+        <p class="mb-6">RAG (Retrieval-Augmented Generation) is the architecture that makes enterprise AI actually useful. Instead of relying on an LLM's training data — which is outdated, generic, and doesn't know your business — RAG systems retrieve relevant content from your private knowledge base at query time, then generate grounded answers from that retrieved context.</p>
+        <p class="mb-6">But building a RAG system that works in a demo is very different from building one that works reliably in enterprise production. This guide covers the architecture decisions, common failure modes, and production lessons from Bytolix's deployments.</p>
+
+        <h2 class="h3 mt-10 mb-4">The Core RAG Architecture</h2>
+        <p class="mb-4">Every RAG system has five components: an ingestion pipeline, a chunking strategy, an embedding model, a vector store, and a retrieval + generation layer. Getting each one right matters — and they interact in non-obvious ways.</p>
+
+        <h3 class="mb-3 text-primary">1. Ingestion Pipeline</h3>
+        <p class="mb-6">Your ingestion pipeline processes raw documents — PDFs, Word docs, SharePoint pages, database records, Confluence articles — and prepares them for embedding. This includes parsing, cleaning, metadata extraction, and chunking. The most common mistake at this stage is treating all documents the same. A contract has different structure from a product spec, which is different from a support ticket. Your ingestion pipeline should respect document structure.</p>
+
+        <h3 class="mb-3 text-primary">2. Chunking Strategy</h3>
+        <p class="mb-4">How you split documents into chunks is one of the most impactful decisions in RAG architecture. Too small and chunks lose context. Too large and retrieval precision drops and you hit context window limits.</p>
+        <p class="mb-6">In production, we use a combination of semantic chunking (splitting at natural topic boundaries) and hierarchical chunking (keeping parent document context alongside child chunks). For structured documents like contracts, we chunk by clause. For narrative documents, we chunk by paragraph with overlap.</p>
+
+        <h3 class="mb-3 text-primary">3. Embedding Model Choice</h3>
+        <p class="mb-6">The embedding model encodes your chunks as dense vectors. For most enterprise use cases, OpenAI's text-embedding-3-large or Cohere's embed-v3 perform well out of the box. For domain-specific corpora (legal, medical, financial), consider fine-tuning an embedding model on domain-specific text. The quality of your embeddings directly determines the quality of your retrieval — it's worth investing here.</p>
+
+        <h3 class="mb-3 text-primary">4. Hybrid Search: The Production Standard</h3>
+        <p class="mb-4">Pure semantic search (cosine similarity over embeddings) misses exact keyword matches. Pure BM25 keyword search misses semantic variants. In production, use hybrid search: a weighted combination of dense vector similarity and sparse BM25 retrieval, merged via Reciprocal Rank Fusion (RRF).</p>
+        <p class="mb-6">This is the single biggest quality improvement you can make to a basic RAG system. We've seen recall improve by 20–40% in production when switching from pure semantic to hybrid search.</p>
+
+        <h3 class="mb-3 text-primary">5. Reranking</h3>
+        <p class="mb-6">After retrieval returns the top-k candidates, a cross-encoder reranker rescores each candidate against the query. This is computationally expensive but dramatically improves precision at the top. Use a reranker for any use case where the quality of the top 1–3 results matters. Cohere Rerank and cross-encoder models from Hugging Face work well.</p>
+
+        <h2 class="h3 mt-10 mb-4">Common Production Failure Modes</h2>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary font-bold">1.</span><div><strong>Chunking boundaries that break context</strong> — A chunk that ends mid-sentence or mid-table loses meaning. Use overlap and structure-aware chunking.</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary font-bold">2.</span><div><strong>Stale embeddings</strong> — When source documents update, the embeddings don't update automatically. Build an incremental re-ingestion pipeline tied to document change events.</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary font-bold">3.</span><div><strong>No access control at retrieval time</strong> — If all chunks are in one index, users can retrieve documents they shouldn't see. Build namespace-based or metadata-filtered retrieval tied to user permissions.</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary font-bold">4.</span><div><strong>Hallucination from low-quality retrieval</strong> — When retrieval returns irrelevant chunks, the LLM fabricates answers from context. Add a relevance gate: if the top retrieved chunk falls below a similarity threshold, return "I don't have information on this" rather than hallucinating.</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary font-bold">5.</span><div><strong>No evaluation harness</strong> — You can't improve what you can't measure. Use RAGAS to score faithfulness (does the answer follow from the retrieved context?) and answer relevancy (does the answer address the question?) on a golden test set.</div></li>
+        </ul>
+
+        <h2 class="h3 mt-10 mb-4">The Stack We Use in Production</h2>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">✓</span><div><strong>Ingestion:</strong> LlamaIndex document loaders + custom parsers for structured documents</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">✓</span><div><strong>Vector store:</strong> Pinecone (cloud) or pgvector (self-hosted) for hybrid search</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">✓</span><div><strong>Embeddings:</strong> text-embedding-3-large for general, domain-fine-tuned for specialist corpora</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">✓</span><div><strong>Reranking:</strong> Cohere Rerank v3</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">✓</span><div><strong>Generation:</strong> Claude claude-sonnet-4-6 or GPT-4o depending on cost and context window needs</div></li>
+          <li class="flex items-start gap-3"><span class="mt-1 text-primary">✓</span><div><strong>Evaluation:</strong> RAGAS + custom golden test sets per deployment</div></li>
+        </ul>
+
+        <div class="bg-theme-light rounded-xl p-8 mt-10">
+          <h3 class="mb-4">Building a RAG system?</h3>
+          <p class="mb-4">Bytolix has shipped enterprise RAG systems for analytics platforms, legal teams, and e-commerce operations. If you're working on a RAG system and want to shortcut the architecture decisions, book a call.</p>
+          <a class="btn btn-primary" href="mailto:hello@bytolix.com">Talk to Our Engineering Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

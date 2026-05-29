@@ -4,10 +4,7 @@ Allow: /
 # Sitemaps
 Sitemap: https://bytolix.com/sitemap.xml
 
-# Block common junk paths
+# Block system/utility paths only
 Disallow: /cdn-cgi/
 Disallow: /.vercel/
 Disallow: /api/
-
-# Crawl-delay for politeness
-Crawl-delay: 10

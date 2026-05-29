@@ -1,2 +1,10 @@
 User-agent: *
 Allow: /
+
+# Sitemaps
+Sitemap: https://bytolix.com/sitemap.xml
+
+# Block system/utility paths only
+Disallow: /cdn-cgi/
+Disallow: /.vercel/
+Disallow: /api/
