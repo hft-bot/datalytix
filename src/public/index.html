@@ -41,8 +41,9 @@ body{background:var(--void);color:var(--white);font-family:'Instrument Sans',san
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(4,5,10,0.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:21px;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(120deg,var(--white) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-logo img{height:40px;width:auto;object-fit:contain;-webkit-text-fill-color:initial}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Cabinet Grotesk',sans-serif;font-size:21px;font-weight:900;letter-spacing:-0.5px}
+.nav-logo span{background:linear-gradient(120deg,var(--white) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo img{height:40px;width:auto;object-fit:contain}
 .nav-links{display:flex;gap:2.5rem;align-items:center}
 .nav-links a{font-size:14px;color:var(--muted);transition:color 0.2s;letter-spacing:0.01em}
 .nav-links a:hover{color:var(--white);text-decoration:none}
@@ -239,7 +240,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <div class="nav-logo"><img src="/bytolix-logo.png" alt="Bytolix">Bytolix</div>
+  <div class="nav-logo"><img src="/bytolix-logo.png" alt="Bytolix"><span>Bytolix</span></div>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#video">See it work</a>
@@ -520,7 +521,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="nav-logo">Bytolix</div>
+      <div class="nav-logo"><img src="/bytolix-logo.png" alt="Bytolix"><span>Bytolix</span></div>
       <p>Agentic AI services for enterprise leaders who want agents in production — not in a deck.</p>
     </div>
     <div class="footer-col">
