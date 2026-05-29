@@ -111,7 +111,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;al
 .video-label{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--violet);margin-bottom:1rem;display:block}
 .video-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:1rem}
 .video-sub{font-size:17px;color:var(--light);max-width:540px;line-height:1.6;margin-bottom:3rem}
-.video-container{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--border2);background:var(--surface);aspect-ratio:16/9;max-width:900px;margin:0 auto;cursor:pointer}
+.video-container{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(99,102,241,0.25);background:#EEF2FF;aspect-ratio:16/9;max-width:900px;margin:0 auto;cursor:pointer;box-shadow:0 20px 60px rgba(99,102,241,0.12)}
 .video-canvas{width:100%;height:100%;display:block}
 .video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;background:rgba(4,5,10,0.6);transition:opacity 0.3s}
 .video-overlay.hidden{opacity:0;pointer-events:none}
@@ -208,6 +208,31 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
 .footer-bottom{max-width:1280px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:12px;color:var(--muted)}
 
+/* USE CASES */
+.use-cases{padding:6rem 3rem;background:rgba(4,5,10,0.85);position:relative;z-index:1}
+.uc-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:3rem;margin-top:2.5rem}
+.uc-tab{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:9px 20px;border-radius:100px;font-size:13px;font-weight:600;font-family:'Cabinet Grotesk',sans-serif;cursor:pointer;transition:all 0.2s;letter-spacing:0.03em}
+.uc-tab:hover{border-color:var(--border2);color:var(--light)}
+.uc-tab.active{background:linear-gradient(135deg,var(--cyan),var(--violet));border-color:transparent;color:var(--void)}
+.uc-panel{display:none;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.uc-panel.active{display:grid}
+.uc-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);background:var(--cyan-dim);border:1px solid var(--border2);padding:4px 12px;border-radius:100px;margin-bottom:1rem}
+.uc-left h3{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(22px,2.5vw,32px);font-weight:900;letter-spacing:-1px;margin-bottom:1rem;line-height:1.15}
+.uc-left p{font-size:15px;color:var(--light);line-height:1.7;margin-bottom:2rem}
+.uc-metrics{display:flex;gap:2rem;margin-bottom:2rem}
+.uc-metric{}
+.uc-mval{font-family:'Cabinet Grotesk',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.uc-mlabel{font-size:11px;color:var(--muted);margin-top:2px}
+.uc-right{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem}
+.uc-flow{display:flex;flex-direction:column;gap:0}
+.uc-fstep{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;font-family:'Cabinet Grotesk',sans-serif;color:var(--muted);transition:all 0.2s}
+.uc-fstep.active{background:var(--cyan-dim);border:1px solid var(--border2);color:var(--white)}
+.uc-fstep.done{color:var(--green)}
+.uc-farrow{text-align:center;color:var(--border2);font-size:16px;padding:2px 0}
+.uc-ficon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.uc-fstep.active .uc-ficon{background:rgba(56,189,248,0.15)}
+.uc-fstep.done .uc-ficon{background:rgba(52,211,153,0.15)}
+
 /* SCROLL ANIM */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
@@ -227,7 +252,9 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
   .nav-links{display:none}
   .cta-form{flex-direction:column}
   nav{padding:0 1.5rem}
-  .hero,.services,.how,.testimonials,.video-section,.cta{padding-left:1.5rem;padding-right:1.5rem}
+  .hero,.services,.how,.testimonials,.video-section,.use-cases,.cta{padding-left:1.5rem;padding-right:1.5rem}
+  .uc-panel.active{grid-template-columns:1fr}
+  .uc-metrics{gap:1rem}
 }
 </style>
 <script type="application/ld+json">
@@ -244,7 +271,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
   <div class="nav-logo"><img src="/bytolix-logo.png" alt="Bytolix"><span>Bytolix</span></div>
   <div class="nav-links">
     <a href="#services">Services</a>
-    <a href="#video">See it work</a>
+    <a href="#use-cases">Use Cases</a>
     <a href="#process">Process</a>
     <a href="#clients">Clients</a>
     <a href="#contact" class="nav-cta">Book a call →</a>
@@ -397,6 +424,154 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
   </div>
 </section>
 
+<!-- USE CASES -->
+<section class="use-cases" id="use-cases">
+  <div class="section-inner">
+    <span class="section-tag reveal">Use cases</span>
+    <h2 class="section-title reveal">Agents deployed across <br>every department</h2>
+    <p class="section-sub reveal">Real workflows we've shipped to production — pick your industry to see the agent stack and outcomes.</p>
+    <div class="uc-tabs reveal">
+      <button class="uc-tab active" onclick="switchUC('finance',this)">Finance</button>
+      <button class="uc-tab" onclick="switchUC('ops',this)">Operations</button>
+      <button class="uc-tab" onclick="switchUC('sales',this)">Sales</button>
+      <button class="uc-tab" onclick="switchUC('hr',this)">HR & Legal</button>
+      <button class="uc-tab" onclick="switchUC('data',this)">Data & Analytics</button>
+    </div>
+    <div class="uc-panels">
+      <div class="uc-panel active" id="uc-finance">
+        <div class="uc-left">
+          <div class="uc-badge">Finance</div>
+          <h3>Automated Financial Close & Board Reporting</h3>
+          <p>Multi-agent system that pulls live data from ERP, reconciles accounts, flags anomalies, and delivers a board-ready PDF — without a single manual export.</p>
+          <div class="uc-metrics">
+            <div class="uc-metric"><div class="uc-mval">73%</div><div class="uc-mlabel">Faster close cycle</div></div>
+            <div class="uc-metric"><div class="uc-mval">$2.1M</div><div class="uc-mlabel">Annual savings</div></div>
+            <div class="uc-metric"><div class="uc-mval">99.8%</div><div class="uc-mlabel">Accuracy rate</div></div>
+          </div>
+          <div class="svc-tags"><span class="tag">SAP Integration</span><span class="tag">LangGraph</span><span class="tag">SQL Agent</span><span class="tag">PDF Generation</span></div>
+        </div>
+        <div class="uc-right">
+          <div class="uc-flow">
+            <div class="uc-fstep done"><div class="uc-ficon">📥</div>ERP Data Pull — live GL, AP/AR</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep active"><div class="uc-ficon">🔍</div>Reconciliation Agent — auto-matches</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">📊</div>Variance Analysis — anomaly flags</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">📄</div>Report Agent — narrative + charts</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep done"><div class="uc-ficon">✅</div>CFO Dashboard — delivered in 4.1s</div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-panel" id="uc-ops">
+        <div class="uc-left">
+          <div class="uc-badge">Operations</div>
+          <h3>Supply Chain Monitoring & PO Automation</h3>
+          <p>Agents that watch inventory levels, predict shortfalls, auto-draft purchase orders, and route approvals — 24/7 with zero manual intervention.</p>
+          <div class="uc-metrics">
+            <div class="uc-metric"><div class="uc-mval">40%</div><div class="uc-mlabel">Ops overhead cut</div></div>
+            <div class="uc-metric"><div class="uc-mval">6hr→12min</div><div class="uc-mlabel">PO cycle time</div></div>
+            <div class="uc-metric"><div class="uc-mval">0</div><div class="uc-mlabel">Stockouts in Q1</div></div>
+          </div>
+          <div class="svc-tags"><span class="tag">ERP APIs</span><span class="tag">AutoGen</span><span class="tag">Slack Alerts</span><span class="tag">DocuSign</span></div>
+        </div>
+        <div class="uc-right">
+          <div class="uc-flow">
+            <div class="uc-fstep done"><div class="uc-ficon">📦</div>Inventory Monitor — real-time feed</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep active"><div class="uc-ficon">🔮</div>Forecast Agent — 14-day demand model</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">📋</div>PO Draft Agent — auto-fills forms</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">✍️</div>Approval Router — escalates if >$50K</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep done"><div class="uc-ficon">✅</div>Vendor Notified — PO sent, ERP updated</div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-panel" id="uc-sales">
+        <div class="uc-left">
+          <div class="uc-badge">Sales</div>
+          <h3>AI-Powered Pipeline & Outreach Agents</h3>
+          <p>Agents that score inbound leads, research prospects, draft personalised outreach, and update the CRM — so reps focus on closing, not admin.</p>
+          <div class="uc-metrics">
+            <div class="uc-metric"><div class="uc-mval">3x</div><div class="uc-mlabel">Pipeline velocity</div></div>
+            <div class="uc-metric"><div class="uc-mval">62%</div><div class="uc-mlabel">More replies</div></div>
+            <div class="uc-metric"><div class="uc-mval">18hr</div><div class="uc-mlabel">Saved/rep/week</div></div>
+          </div>
+          <div class="svc-tags"><span class="tag">Salesforce</span><span class="tag">HubSpot</span><span class="tag">LinkedIn API</span><span class="tag">Claude API</span></div>
+        </div>
+        <div class="uc-right">
+          <div class="uc-flow">
+            <div class="uc-fstep done"><div class="uc-ficon">🎯</div>Lead Scoring Agent — ICP match %</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep active"><div class="uc-ficon">🔍</div>Research Agent — LinkedIn + web</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">✍️</div>Outreach Agent — personalised email</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">📊</div>CRM Agent — logs activity, updates stage</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep done"><div class="uc-ficon">✅</div>Rep Notified — warm leads surfaced</div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-panel" id="uc-hr">
+        <div class="uc-left">
+          <div class="uc-badge">HR & Legal</div>
+          <h3>Contract Review & Employee Onboarding Agents</h3>
+          <p>Legal agents that read contracts, flag risk clauses, and summarise obligations. HR agents that run full onboarding — IT provisioning, documentation, training.</p>
+          <div class="uc-metrics">
+            <div class="uc-metric"><div class="uc-mval">85%</div><div class="uc-mlabel">Faster doc review</div></div>
+            <div class="uc-metric"><div class="uc-mval">5d→4hr</div><div class="uc-mlabel">Onboarding time</div></div>
+            <div class="uc-metric"><div class="uc-mval">100%</div><div class="uc-mlabel">Compliance coverage</div></div>
+          </div>
+          <div class="svc-tags"><span class="tag">RAG</span><span class="tag">Workday API</span><span class="tag">DocuSign</span><span class="tag">Jira</span></div>
+        </div>
+        <div class="uc-right">
+          <div class="uc-flow">
+            <div class="uc-fstep done"><div class="uc-ficon">📄</div>Contract Ingested — PDF/DOCX parsed</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep active"><div class="uc-ficon">⚖️</div>Clause Extractor — risk flagging</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">📝</div>Summary Agent — plain-English brief</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">🔔</div>Review Router — legal team alerted</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep done"><div class="uc-ficon">✅</div>Decision logged — full audit trail</div>
+          </div>
+        </div>
+      </div>
+      <div class="uc-panel" id="uc-data">
+        <div class="uc-left">
+          <div class="uc-badge">Data & Analytics</div>
+          <h3>Autonomous Reporting & Anomaly Detection</h3>
+          <p>Agents that monitor data pipelines, detect anomalies in real time, auto-generate exec dashboards, and alert the right team before a problem becomes a crisis.</p>
+          <div class="uc-metrics">
+            <div class="uc-metric"><div class="uc-mval">Real-time</div><div class="uc-mlabel">Anomaly detection</div></div>
+            <div class="uc-metric"><div class="uc-mval">12x</div><div class="uc-mlabel">Faster reporting</div></div>
+            <div class="uc-metric"><div class="uc-mval">0</div><div class="uc-mlabel">Analyst bottlenecks</div></div>
+          </div>
+          <div class="svc-tags"><span class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">LlamaIndex</span></div>
+        </div>
+        <div class="uc-right">
+          <div class="uc-flow">
+            <div class="uc-fstep done"><div class="uc-ficon">📡</div>Pipeline Monitor — streaming events</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep active"><div class="uc-ficon">🚨</div>Anomaly Agent — statistical deviation</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">🧠</div>Root Cause Agent — trace & diagnose</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep"><div class="uc-ficon">📊</div>Dashboard Agent — auto-refresh charts</div>
+            <div class="uc-farrow">↓</div>
+            <div class="uc-fstep done"><div class="uc-ficon">✅</div>Slack + Email alert — team notified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section class="how" id="process">
   <div class="section-inner">
@@ -430,7 +605,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
 </section>
 
 <!-- CLIENTS -->
-<div class="clients-section">
+<div class="clients-section" id="clients">
   <div class="section-inner">
     <p class="clients-label reveal">Companies that trust Bytolix with their AI transformation</p>
     <div class="clients-row reveal">
@@ -535,17 +710,17 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
     </div>
     <div class="footer-col">
       <h5>Company</h5>
-      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#use-cases">Use Cases</a>
       <a href="#process">Process</a>
-      <a href="#clients">Clients</a>
-      <a href="mailto:hello@bytolix.com">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
     <div class="footer-col">
       <h5>Clients</h5>
       <a href="https://zarinzen.com" target="_blank" rel="noopener">Zari & Zen ↗</a>
-      <a href="#">Flowkon</a>
-      <a href="#">HFT Bot</a>
-      <a href="#">AlphaLogic</a>
+      <a href="#clients">Flowkon</a>
+      <a href="#clients">HFT Bot</a>
+      <a href="#clients">DataCorp</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -576,114 +751,175 @@ function drawHero(){
 }
 resizeHero();window.addEventListener('resize',resizeHero);drawHero();
 
-// VIDEO CANVAS - Animated agent demo
+// VIDEO CANVAS - Premium multi-agent demo with voice
 const vc=document.getElementById('videoCanvas');
 const vctx=vc.getContext('2d');
-let vPlaying=false,vT=0;
+let vPlaying=false,vT=0,vLastStep=-1;
 function resizeVideo(){vc.width=vc.offsetWidth;vc.height=vc.offsetHeight;}
 resizeVideo();window.addEventListener('resize',resizeVideo);
 
-const steps=[
-  {t:0,label:'Receiving task: "Analyze Q1 sales data and generate report"',color:'#38BDF8',icon:'📥'},
-  {t:80,label:'Agent planning: Breaking into 3 sub-tasks...',color:'#818CF8',icon:'🧠'},
-  {t:160,label:'Sub-agent 1: Querying database → 12,483 records retrieved',color:'#34D399',icon:'🔍'},
-  {t:240,label:'Sub-agent 2: Running analysis → Identifying trends...',color:'#FBBF24',icon:'📊'},
-  {t:320,label:'Sub-agent 3: Generating executive summary...',color:'#38BDF8',icon:'✍️'},
-  {t:400,label:'Orchestrator: Merging outputs → Quality check passed ✓',color:'#34D399',icon:'🔗'},
-  {t:480,label:'Task complete: Report delivered to CEO dashboard in 8.2s',color:'#818CF8',icon:'✅'},
+const vSteps=[
+  {t:0,  nodes:[0,1],label:'Task received: Analyse Q1 sales data and generate executive report',speak:'Task received. Analysing Q1 sales data to generate an executive report.'},
+  {t:90, nodes:[1],  label:'Orchestrator planning: Routing to 3 specialist agents in parallel',speak:'Orchestrator planning. Routing tasks to three specialist agents in parallel.'},
+  {t:180,nodes:[1,2],label:'Data Agent: Querying database — 12,483 records retrieved in 1.2s',speak:'Data agent querying. Twelve thousand records retrieved.'},
+  {t:270,nodes:[2,3],label:'Analytics Agent: Running statistical analysis — 4 key trends identified',speak:'Analytics agent running statistical analysis. Four key trends identified.'},
+  {t:360,nodes:[3,4],label:'Summary Agent: Drafting executive narrative with visualisation plan',speak:'Summary agent drafting the executive narrative with visualisation plan.'},
+  {t:450,nodes:[1,4],label:'Orchestrator: QA passed ✓ — merging all agent outputs',speak:'Quality check passed. Orchestrator merging all agent outputs.'},
+  {t:540,nodes:[4,5],label:'Delivered: Report pushed to CEO dashboard in 8.2s ✓',speak:'Task complete. Report delivered to the C E O dashboard in 8.2 seconds.'},
 ];
+
+function vcRoundRect(x,y,w,h,r){vctx.beginPath();vctx.moveTo(x+r,y);vctx.lineTo(x+w-r,y);vctx.quadraticCurveTo(x+w,y,x+w,y+r);vctx.lineTo(x+w,y+h-r);vctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);vctx.lineTo(x+r,y+h);vctx.quadraticCurveTo(x,y+h,x,y+h-r);vctx.lineTo(x,y+r);vctx.quadraticCurveTo(x,y,x+r,y);vctx.closePath();}
+
+function vcSpeak(text){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  const voices=window.speechSynthesis.getVoices();
+  const v=voices.find(v=>v.name==='Samantha')||voices.find(v=>v.name.includes('Google UK English Female'))||voices.find(v=>v.lang==='en-US'&&v.localService)||voices[0];
+  if(v)u.voice=v;
+  u.rate=0.88;u.pitch=1.0;u.volume=0.75;
+  window.speechSynthesis.speak(u);
+}
 
 function drawVideo(){
   if(!vPlaying)return;
-  vctx.clearRect(0,0,vc.width,vc.height);
   vT++;
   const W=vc.width,H=vc.height;
+  const loopT=vT%630;
+  const step=vSteps.filter(s=>s.t<=loopT).pop()||vSteps[0];
+  const stepIdx=vSteps.indexOf(step);
 
-  // BG
-  vctx.fillStyle='#080C16';vctx.fillRect(0,0,W,H);
+  if(stepIdx!==vLastStep){vLastStep=stepIdx;vcSpeak(step.speak);}
 
-  // Grid
-  vctx.strokeStyle='rgba(56,189,248,0.05)';vctx.lineWidth=1;
-  for(let x=0;x<W;x+=40){vctx.beginPath();vctx.moveTo(x,0);vctx.lineTo(x,H);vctx.stroke();}
-  for(let y=0;y<H;y+=40){vctx.beginPath();vctx.moveTo(0,y);vctx.lineTo(W,y);vctx.stroke();}
+  vctx.clearRect(0,0,W,H);
 
-  // Title
-  vctx.font=`bold ${Math.min(16,W*0.02)}px Cabinet Grotesk,sans-serif`;
-  vctx.fillStyle='rgba(56,189,248,0.6)';
-  vctx.fillText('BYTOLIX AGENT RUNTIME — LIVE EXECUTION',20,30);
+  // Light background
+  const bg=vctx.createLinearGradient(0,0,W,H);
+  bg.addColorStop(0,'#EEF2FF');bg.addColorStop(1,'#F5F8FF');
+  vctx.fillStyle=bg;vctx.fillRect(0,0,W,H);
 
-  // Timeline
-  const loopT=vT%560;
-  const activeStep=steps.filter(s=>s.t<=loopT).pop()||steps[0];
-  const stepIdx=steps.indexOf(activeStep);
+  // Dot grid
+  vctx.fillStyle='rgba(99,102,241,0.08)';
+  for(let x=20;x<W;x+=28){for(let y=55;y<H*0.82;y+=28){vctx.beginPath();vctx.arc(x,y,1,0,Math.PI*2);vctx.fill();}}
 
-  steps.forEach((s,i)=>{
-    const x=20+i*(W-40)/6.5;
-    const active=i===stepIdx;
-    const done=i<stepIdx;
-    vctx.beginPath();
-    vctx.arc(x,H*0.75,active?8:5,0,Math.PI*2);
-    vctx.fillStyle=done?'#34D399':active?s.color:'rgba(99,120,150,0.4)';
-    vctx.fill();
-    if(i<steps.length-1){
-      vctx.beginPath();
-      vctx.strokeStyle=done?'rgba(52,211,153,0.5)':'rgba(99,120,150,0.2)';
-      vctx.lineWidth=1;
-      const nx=20+(i+1)*(W-40)/6.5;
-      vctx.moveTo(x+8,H*0.75);vctx.lineTo(nx-8,H*0.75);vctx.stroke();
+  // Header
+  vctx.fillStyle='rgba(255,255,255,0.95)';vcRoundRect(0,0,W,46,0);vctx.fill();
+  vctx.strokeStyle='rgba(99,102,241,0.15)';vctx.lineWidth=1;vctx.beginPath();vctx.moveTo(0,46);vctx.lineTo(W,46);vctx.stroke();
+  // Live dot
+  const pulse2=Math.abs(Math.sin(vT*0.08));
+  vctx.beginPath();vctx.arc(18,23,5,0,Math.PI*2);vctx.fillStyle=`rgba(34,197,94,${0.6+pulse2*0.4})`;vctx.fill();
+  vctx.font=`bold ${Math.min(12,W*0.014)}px Cabinet Grotesk,sans-serif`;
+  vctx.fillStyle='#1e3a8a';vctx.textAlign='left';
+  vctx.fillText('BYTOLIX AGENT RUNTIME — LIVE EXECUTION',32,29);
+  vctx.fillStyle='#6b7280';vctx.textAlign='right';
+  vctx.font=`${Math.min(11,W*0.013)}px Cabinet Grotesk,sans-serif`;
+  vctx.fillText(`ELAPSED: ${(vT*0.016).toFixed(1)}s`,W-16,29);
+  vctx.textAlign='left';
+
+  // Agent nodes definition
+  const R=Math.min(W,H)*0.062;
+  const agents=[
+    {x:W*0.07,y:H*0.40,label:'Input',icon:'📋',color:'#6366f1',bg:'#EEF2FF'},
+    {x:W*0.31,y:H*0.40,label:'Orchestrator',icon:'🎯',color:'#0ea5e9',bg:'#F0F9FF'},
+    {x:W*0.55,y:H*0.22,label:'Data Agent',icon:'🔍',color:'#10b981',bg:'#ECFDF5'},
+    {x:W*0.55,y:H*0.58,label:'Analytics Agent',icon:'📊',color:'#f59e0b',bg:'#FFFBEB'},
+    {x:W*0.76,y:H*0.40,label:'Summary Agent',icon:'✍️',color:'#8b5cf6',bg:'#F5F3FF'},
+    {x:W*0.94,y:H*0.40,label:'Dashboard',icon:'✅',color:'#10b981',bg:'#ECFDF5'},
+  ];
+  const conns=[[0,1],[1,2],[1,3],[2,4],[3,4],[4,1],[4,5]];
+
+  // Draw connections
+  conns.forEach(([fi,ti])=>{
+    const a=agents[fi],b=agents[ti];
+    const isAct=step.nodes.includes(fi)&&step.nodes.includes(ti);
+    vctx.setLineDash(isAct?[]:[5,5]);
+    vctx.strokeStyle=isAct?'rgba(99,102,241,0.5)':'rgba(203,213,225,0.6)';
+    vctx.lineWidth=isAct?2:1;
+    vctx.beginPath();vctx.moveTo(a.x,a.y);vctx.lineTo(b.x,b.y);vctx.stroke();
+    vctx.setLineDash([]);
+    // Animated packet
+    if(isAct){
+      const t=(vT*0.018)%1;
+      vctx.beginPath();vctx.arc(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t,4.5,0,Math.PI*2);
+      vctx.fillStyle='#6366f1';vctx.fill();
+      vctx.beginPath();vctx.arc(a.x+(b.x-a.x)*((t+0.4)%1),a.y+(b.y-a.y)*((t+0.4)%1),3,0,Math.PI*2);
+      vctx.fillStyle='rgba(99,102,241,0.5)';vctx.fill();
     }
   });
 
-  // Active step label
-  const progress=(loopT-activeStep.t)/80;
-  vctx.font=`500 ${Math.min(14,W*0.018)}px Instrument Sans,sans-serif`;
-  vctx.fillStyle=activeStep.color;
-  vctx.globalAlpha=Math.min(1,progress*2);
-  vctx.fillText(activeStep.icon+' '+activeStep.label,20,H*0.75+40);
+  // Draw agent nodes
+  agents.forEach((ag,i)=>{
+    const isAct=step.nodes.includes(i);
+    if(isAct){
+      const p=Math.sin(vT*0.1)*5;
+      vctx.beginPath();vctx.arc(ag.x,ag.y,R+10+p,0,Math.PI*2);
+      vctx.fillStyle=ag.color+'18';vctx.fill();
+    }
+    // Shadow
+    vctx.shadowColor=isAct?ag.color+'50':'transparent';
+    vctx.shadowBlur=isAct?16:0;
+    vctx.beginPath();vctx.arc(ag.x,ag.y,R,0,Math.PI*2);
+    vctx.fillStyle=isAct?'white':ag.bg;vctx.fill();
+    vctx.strokeStyle=isAct?ag.color:'rgba(203,213,225,0.8)';
+    vctx.lineWidth=isAct?2.5:1;vctx.stroke();
+    vctx.shadowBlur=0;vctx.shadowColor='transparent';
+    // Icon
+    vctx.font=`${Math.min(20,R*0.85)}px sans-serif`;
+    vctx.textAlign='center';
+    vctx.fillText(ag.icon,ag.x,ag.y+Math.min(7,R*0.3));
+    // Label
+    vctx.font=`${isAct?'700':'600'} ${Math.min(10,W*0.012)}px Cabinet Grotesk,sans-serif`;
+    vctx.fillStyle=isAct?ag.color:'#94a3b8';
+    vctx.fillText(ag.label,ag.x,ag.y+R+15);
+    // Active dot
+    if(isAct){vctx.beginPath();vctx.arc(ag.x+R*0.68,ag.y-R*0.68,4.5,0,Math.PI*2);vctx.fillStyle='#22c55e';vctx.fill();}
+    vctx.textAlign='left';
+  });
+
+  // Progress bar
+  const barY=H*0.84,barH=3,bX=16,bW=W-32;
+  vctx.fillStyle='rgba(203,213,225,0.4)';vcRoundRect(bX,barY,bW,barH,2);vctx.fill();
+  const pg=vctx.createLinearGradient(bX,0,bX+bW,0);
+  pg.addColorStop(0,'#6366f1');pg.addColorStop(1,'#8b5cf6');
+  vctx.fillStyle=pg;vcRoundRect(bX,barY,bW*(loopT/630),barH,2);vctx.fill();
+  // Step dots on bar
+  vSteps.forEach((s,i)=>{
+    const dx=bX+bW*(s.t/630),done=i<stepIdx,act=i===stepIdx;
+    vctx.beginPath();vctx.arc(dx,barY+1.5,act?6:3.5,0,Math.PI*2);
+    vctx.fillStyle=done?'#22c55e':act?'#6366f1':'rgba(148,163,184,0.5)';vctx.fill();
+    if(act){vctx.strokeStyle='white';vctx.lineWidth=1.5;vctx.stroke();}
+  });
+
+  // Step label box
+  const sp=Math.min(1,(loopT-step.t)/50);
+  vctx.globalAlpha=sp;
+  vctx.fillStyle='rgba(255,255,255,0.97)';
+  vcRoundRect(bX,H*0.895,bW,28,6);vctx.fill();
+  vctx.strokeStyle='rgba(99,102,241,0.2)';vctx.lineWidth=1;
+  vcRoundRect(bX,H*0.895,bW,28,6);vctx.stroke();
+  vctx.font=`500 ${Math.min(11.5,W*0.013)}px Instrument Sans,sans-serif`;
+  vctx.fillStyle='#1e3a8a';vctx.textAlign='left';
+  vctx.fillText(step.label,bX+10,H*0.895+19);
   vctx.globalAlpha=1;
-
-  // Pulsing agent node
-  const pulse=Math.sin(vT*0.08)*10;
-  vctx.beginPath();
-  vctx.arc(W*0.5,H*0.35,30+pulse,0,Math.PI*2);
-  vctx.fillStyle='rgba(56,189,248,0.05)';vctx.fill();
-  vctx.strokeStyle='rgba(56,189,248,0.3)';vctx.lineWidth=1;vctx.stroke();
-  vctx.beginPath();
-  vctx.arc(W*0.5,H*0.35,20,0,Math.PI*2);
-  vctx.fillStyle='rgba(56,189,248,0.15)';vctx.fill();
-  vctx.strokeStyle='rgba(56,189,248,0.6)';vctx.lineWidth=2;vctx.stroke();
-  vctx.font=`22px sans-serif`;
-  vctx.textAlign='center';
-  vctx.fillText('🤖',W*0.5,H*0.35+7);
-  vctx.textAlign='left';
-
-  // Data lines
-  for(let i=0;i<4;i++){
-    const angle=(vT*0.03+i*Math.PI*0.5);
-    const sx=W*0.5+Math.cos(angle)*80;
-    const sy=H*0.35+Math.sin(angle)*80;
-    const ex=W*0.5+Math.cos(angle)*120;
-    const ey=H*0.35+Math.sin(angle)*120;
-    const alpha=(Math.sin(vT*0.05+i)*0.5+0.5)*0.4;
-    vctx.beginPath();
-    vctx.strokeStyle=`rgba(56,189,248,${alpha})`;
-    vctx.lineWidth=1;
-    vctx.moveTo(sx,sy);vctx.lineTo(ex,ey);vctx.stroke();
-  }
-
-  // Timer
-  vctx.font=`bold ${Math.min(12,W*0.015)}px Cabinet Grotesk,sans-serif`;
-  vctx.fillStyle='rgba(107,122,153,0.8)';
-  vctx.fillText(`ELAPSED: ${(vT*0.016).toFixed(1)}s`,W-120,20);
 
   requestAnimationFrame(drawVideo);
 }
 
 document.getElementById('playBtn').addEventListener('click',()=>{
+  // Pre-load voices
+  if(window.speechSynthesis)window.speechSynthesis.getVoices();
   vPlaying=true;
   document.getElementById('videoOverlay').classList.add('hidden');
   drawVideo();
 });
+
+// USE CASES TAB SWITCHER
+function switchUC(id,btn){
+  document.querySelectorAll('.uc-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.uc-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('uc-'+id).classList.add('active');
+  btn.classList.add('active');
+}
 
 // SCROLL REVEAL
 const revealEls=document.querySelectorAll('.reveal');
