@@ -34,6 +34,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--void);color:var(--white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;cursor:none}
+a{text-decoration:none;color:inherit}
 
 /* CURSOR */
 .cursor{position:fixed;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.1s;mix-blend-mode:screen}
@@ -167,7 +168,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;al
 .clients-section{padding:4rem 3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(4,5,10,0.85);position:relative;z-index:1}
 .clients-label{font-size:12px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-bottom:2.5rem}
 .clients-row{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;align-items:center}
-.client-pill{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--surface);border:1px solid var(--border);border-radius:100px;opacity:0.55;transition:all 0.3s;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700}
+.client-pill{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--surface);border:1px solid var(--border);border-radius:100px;opacity:0.55;transition:all 0.3s;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--white)}
 .client-pill:hover{opacity:1;border-color:var(--border2)}
 .cpill-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
 
