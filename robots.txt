@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://bytolix.com/sitemap.xml
+
+# Block common junk paths
+Disallow: /cdn-cgi/
+Disallow: /.vercel/
+Disallow: /api/
+
+# Crawl-delay for politeness
+Crawl-delay: 10
