@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bytolix — Agentic AI Services for Enterprise Leaders</title>
+<meta name="description" content="Bytolix builds and deploys autonomous AI agents for enterprise — multi-agent orchestration, RAG systems, agentic workflows, and AI copilots. Trusted by CTOs and CEOs globally.">
+<meta name="keywords" content="agentic AI services, AI agent development, multi-agent orchestration, RAG systems, enterprise AI agents, AI workflow automation, AI consulting, LLM engineering">
+<meta property="og:title" content="Bytolix — Agentic AI Services for Enterprise Leaders">
+<meta property="og:description" content="We build autonomous AI agents that work for your business 24/7 — from strategy to production.">
+<meta property="og:url" content="https://bytolix.com">
+<link rel="canonical" href="https://bytolix.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04050A;
+  --deep:#080C16;
+  --surface:#0D1422;
+  --card:#111827;
+  --border:rgba(99,179,237,0.1);
+  --border2:rgba(99,179,237,0.2);
+  --cyan:#38BDF8;
+  --cyan-dim:rgba(56,189,248,0.1);
+  --cyan-glow:rgba(56,189,248,0.2);
+  --violet:#818CF8;
+  --violet-dim:rgba(129,140,248,0.1);
+  --green:#34D399;
+  --amber:#FBBF24;
+  --white:#F0F4FF;
+  --muted:#6B7A99;
+  --light:#A8B4CC;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.1s;mix-blend-mode:screen}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(56,189,248,0.4);border-radius:50%;pointer-events:none;z-index:99998;transition:all 0.12s ease}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(4,5,10,0.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cabinet Grotesk',sans-serif;font-size:21px;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(120deg,var(--white) 0%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{font-size:14px;color:var(--muted);transition:color 0.2s;letter-spacing:0.01em}
+.nav-links a:hover{color:var(--white);text-decoration:none}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--void);padding:9px 22px;border-radius:8px;font-size:14px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;transition:opacity 0.2s;letter-spacing:0.02em}
+.nav-cta:hover{opacity:0.85;color:var(--void)}
+
+/* CANVAS HERO */
+#heroCanvas{position:absolute;inset:0;z-index:0}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 3rem 80px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(56,189,248,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--cyan-dim);border:1px solid var(--border2);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:500;color:var(--cyan);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
+.blink{display:inline-block;width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero h1{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(44px,5.5vw,76px);font-weight:900;letter-spacing:-3px;line-height:0.95;margin-bottom:1.75rem}
+.hero h1 .line1{display:block;color:var(--white)}
+.hero h1 .line2{display:block;background:linear-gradient(120deg,var(--cyan) 0%,var(--violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .line3{display:block;color:var(--white)}
+.hero-sub{font-size:17px;color:var(--light);line-height:1.7;max-width:500px;margin-bottom:2.5rem;font-weight:400}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--void);padding:14px 30px;border-radius:10px;font-size:15px;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--violet),var(--cyan));opacity:0;transition:opacity 0.3s}
+.btn-primary:hover::before{opacity:1}
+.btn-primary span{position:relative;z-index:1}
+.btn-secondary{border:1px solid var(--border2);color:var(--light);padding:14px 30px;border-radius:10px;font-size:15px;transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* AGENT VISUAL */
+.agent-visual{position:relative}
+.agent-orbit{width:340px;height:340px;position:relative;margin:0 auto}
+.orbit-ring{position:absolute;border:1px solid var(--border);border-radius:50%;animation:spin linear infinite}
+.orbit-ring:nth-child(1){inset:0;animation-duration:20s}
+.orbit-ring:nth-child(2){inset:40px;animation-duration:15s;animation-direction:reverse;border-color:var(--border2)}
+.orbit-ring:nth-child(3){inset:80px;animation-duration:10s;border-style:dashed}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.orbit-center{position:absolute;inset:120px;background:var(--surface);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.orbit-center-icon{font-size:28px}
+.orbit-center-label{font-family:'Cabinet Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:0.1em}
+.orbit-node{position:absolute;width:44px;height:44px;background:var(--card);border:1px solid var(--border2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 20px var(--cyan-glow)}
+.n1{top:-22px;left:50%;transform:translateX(-50%)}
+.n2{right:-22px;top:50%;transform:translateY(-50%)}
+.n3{bottom:-22px;left:50%;transform:translateX(-50%)}
+.n4{left:-22px;top:50%;transform:translateY(-50%)}
+.agent-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2rem}
+.astat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+.astat-val{font-family:'Cabinet Grotesk',sans-serif;font-size:24px;font-weight:900;letter-spacing:-0.5px}
+.astat-val.c{color:var(--cyan)}
+.astat-val.v{color:var(--violet)}
+.astat-val.g{color:var(--green)}
+.astat-val.a{color:var(--amber)}
+.astat-label{font-size:11px;color:var(--muted);margin-top:3px}
+
+/* TICKER */
+.ticker{padding:1rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--deep)}
+.ticker-inner{display:flex;gap:3rem;animation:ticker 30s linear infinite;white-space:nowrap}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-shrink:0}
+.tick-dot{width:5px;height:5px;background:var(--cyan);border-radius:50%;flex-shrink:0}
+
+/* VIDEO SECTION */
+.video-section{padding:6rem 3rem;background:var(--deep);position:relative;overflow:hidden}
+.video-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(129,140,248,0.05) 0%,transparent 70%)}
+.video-inner{max-width:1280px;margin:0 auto}
+.video-label{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--violet);margin-bottom:1rem;display:block}
+.video-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:1rem}
+.video-sub{font-size:17px;color:var(--light);max-width:540px;line-height:1.6;margin-bottom:3rem}
+.video-container{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--border2);background:var(--surface);aspect-ratio:16/9;max-width:900px;margin:0 auto;cursor:pointer}
+.video-canvas{width:100%;height:100%;display:block}
+.video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;background:rgba(4,5,10,0.6);transition:opacity 0.3s}
+.video-overlay.hidden{opacity:0;pointer-events:none}
+.play-btn{width:80px;height:80px;background:linear-gradient(135deg,var(--cyan),var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.2s;box-shadow:0 0 40px var(--cyan-glow)}
+.play-btn:hover{transform:scale(1.1)}
+.play-icon{width:0;height:0;border-style:solid;border-width:14px 0 14px 24px;border-color:transparent transparent transparent var(--void);margin-left:4px}
+.video-caption{font-size:13px;color:var(--light);letter-spacing:0.05em}
+.video-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;max-width:900px;margin-left:auto;margin-right:auto}
+.vstat{text-align:center;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px}
+.vstat-num{font-family:'Cabinet Grotesk',sans-serif;font-size:32px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.vstat-label{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* SERVICES */
+.services{padding:6rem 3rem}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-tag{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;display:block}
+.section-title{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:1rem}
+.section-sub{font-size:17px;color:var(--light);max-width:540px;line-height:1.6;margin-bottom:3.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.svc::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.3s}
+.svc:nth-child(1)::after{background:radial-gradient(circle at 0% 0%,var(--cyan-dim),transparent 60%)}
+.svc:nth-child(2)::after{background:radial-gradient(circle at 0% 0%,var(--violet-dim),transparent 60%)}
+.svc:nth-child(3)::after{background:radial-gradient(circle at 0% 0%,rgba(52,211,153,0.08),transparent 60%)}
+.svc:nth-child(4)::after{background:radial-gradient(circle at 0% 0%,rgba(251,191,36,0.08),transparent 60%)}
+.svc:nth-child(5)::after{background:radial-gradient(circle at 0% 0%,var(--cyan-dim),transparent 60%)}
+.svc:nth-child(6)::after{background:radial-gradient(circle at 0% 0%,var(--violet-dim),transparent 60%)}
+.svc:hover{border-color:var(--border2);transform:translateY(-4px)}
+.svc:hover::after{opacity:1}
+.svc-icon{font-size:28px;margin-bottom:1.25rem;display:block}
+.svc-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:1rem}
+.hot{background:rgba(251,191,36,0.12);color:var(--amber);border:1px solid rgba(251,191,36,0.25)}
+.rising{background:rgba(52,211,153,0.12);color:var(--green);border:1px solid rgba(52,211,153,0.25)}
+.core{background:var(--cyan-dim);color:var(--cyan);border:1px solid var(--border2)}
+.svc h3{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.3px;margin-bottom:0.75rem}
+.svc p{font-size:14px;color:var(--muted);line-height:1.65}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.25rem}
+.tag{font-size:11px;background:var(--surface);border:1px solid var(--border);color:var(--light);padding:3px 9px;border-radius:6px}
+.svc-featured{grid-column:span 2;background:linear-gradient(135deg,var(--surface) 0%,var(--card) 100%);border-color:var(--border2)}
+
+/* HOW */
+.how{background:var(--deep);padding:6rem 3rem}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem;position:relative}
+.process-line{position:absolute;top:36px;left:calc(12.5% + 28px);right:calc(12.5% + 28px);height:1px;background:linear-gradient(90deg,var(--cyan),var(--violet));opacity:0.3}
+.pstep{text-align:center;padding:1.5rem 1rem;position:relative}
+.pstep-num{width:72px;height:72px;border-radius:50%;background:var(--card);border:1px solid var(--border2);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;z-index:1;transition:all 0.3s}
+.pstep-num-text{font-family:'Cabinet Grotesk',sans-serif;font-size:20px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.pstep:hover .pstep-num{background:linear-gradient(135deg,var(--cyan),var(--violet));border-color:transparent}
+.pstep:hover .pstep-num-text{background:none;-webkit-text-fill-color:var(--void)}
+.pstep h4{font-family:'Cabinet Grotesk',sans-serif;font-size:16px;font-weight:800;margin-bottom:0.5rem}
+.pstep p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* CLIENTS */
+.clients-section{padding:4rem 3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.clients-label{font-size:12px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-bottom:2.5rem}
+.clients-row{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;align-items:center}
+.client-pill{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--surface);border:1px solid var(--border);border-radius:100px;opacity:0.55;transition:all 0.3s;font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:700}
+.client-pill:hover{opacity:1;border-color:var(--border2)}
+.cpill-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+
+/* TESTIMONIALS */
+.testimonials{padding:6rem 3rem;background:var(--deep)}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:4rem}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:border-color 0.3s;position:relative;overflow:hidden}
+.tcard::before{content:'"';position:absolute;top:-10px;right:20px;font-family:'Cabinet Grotesk',sans-serif;font-size:120px;font-weight:900;color:var(--border);line-height:1;pointer-events:none}
+.tcard:hover{border-color:var(--border2)}
+.stars{color:var(--amber);font-size:13px;letter-spacing:2px;margin-bottom:1rem}
+.tquote{font-size:15px;color:var(--light);line-height:1.7;font-style:italic;margin-bottom:1.5rem;font-weight:400;position:relative;z-index:1}
+.tauthor{display:flex;align-items:center;gap:12px}
+.tavatar{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:900}
+.tname{font-family:'Cabinet Grotesk',sans-serif;font-size:14px;font-weight:800}
+.trole{font-size:12px;color:var(--muted)}
+.tlink{margin-left:auto;font-size:12px;color:var(--cyan);font-weight:500}
+.tlink:hover{opacity:0.7}
+
+/* CTA */
+.cta{padding:6rem 3rem;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(56,189,248,0.06) 0%,transparent 70%)}
+.cta-box{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta-box h2{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:900;letter-spacing:-2.5px;line-height:1.0;margin-bottom:1.25rem}
+.cta-box p{font-size:18px;color:var(--light);margin-bottom:2.5rem;font-weight:400}
+.cta-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+.cta-input{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--white);font-family:'Instrument Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.cta-input:focus{border-color:var(--cyan)}
+.cta-input::placeholder{color:var(--muted)}
+
+/* FOOTER */
+footer{padding:3rem;border-top:1px solid var(--border);background:var(--deep)}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3rem}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.7;margin-top:0.75rem}
+.footer-col h5{font-family:'Cabinet Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--light);margin-bottom:1rem}
+.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:0.6rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--cyan)}
+.footer-bottom{max-width:1280px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:12px;color:var(--muted)}
+
+/* SCROLL ANIM */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+@media(max-width:960px){
+  .hero-inner,.about-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .svc-featured{grid-column:span 1}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .process-line{display:none}
+  .tgrid{grid-template-columns:1fr}
+  .video-stats{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .cta-form{flex-direction:column}
+  nav{padding:0 1.5rem}
+  .hero,.services,.how,.testimonials,.video-section,.cta{padding-left:1.5rem;padding-right:1.5rem}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Bytolix","url":"https://bytolix.com","description":"Agentic AI services company building autonomous AI agents, multi-agent orchestration systems, RAG pipelines, and AI workflow automation for enterprise CEOs and CTOs.","serviceType":["Agentic AI Development","Multi-Agent Orchestration","RAG Systems","AI Workflow Automation","LLM Engineering","AI Strategy Consulting"],"areaServed":"Worldwide"}
+</script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <div class="nav-logo">Bytolix</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#video">See it work</a>
+    <a href="#process">Process</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact" class="nav-cta">Book a call →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="blink"></span> Agentic AI Services</div>
+      <h1>
+        <span class="line1">Autonomous agents.</span>
+        <span class="line2">Real results.</span>
+        <span class="line3">Zero fluff.</span>
+      </h1>
+      <p class="hero-sub">We design, build, and deploy AI agents that work autonomously inside your enterprise — orchestrating workflows, processing data, and making decisions while your team sleeps.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary"><span>Deploy your first agent →</span></a>
+        <a href="#video" class="btn-secondary">Watch it work</a>
+      </div>
+    </div>
+    <div class="agent-visual">
+      <div class="agent-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-center">
+          <div class="orbit-center-icon">🤖</div>
+          <div class="orbit-center-label">AI AGENT</div>
+        </div>
+        <div class="orbit-node n1">📊</div>
+        <div class="orbit-node n2">🔗</div>
+        <div class="orbit-node n3">⚡</div>
+        <div class="orbit-node n4">🧠</div>
+      </div>
+      <div class="agent-stats">
+        <div class="astat"><div class="astat-val c">$11.8B</div><div class="astat-label">AI Agent market 2026</div></div>
+        <div class="astat"><div class="astat-val v">40%</div><div class="astat-label">Enterprise apps with agents by EOY</div></div>
+        <div class="astat"><div class="astat-val g">141%</div><div class="astat-label">YoY spend increase</div></div>
+        <div class="astat"><div class="astat-val a">24/7</div><div class="astat-label">Autonomous operation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="tick-item"><span class="tick-dot"></span>Multi-Agent Orchestration</span>
+    <span class="tick-item"><span class="tick-dot"></span>RAG Systems</span>
+    <span class="tick-item"><span class="tick-dot"></span>Agentic Workflow Automation</span>
+    <span class="tick-item"><span class="tick-dot"></span>LLM Engineering</span>
+    <span class="tick-item"><span class="tick-dot"></span>AI Copilots</span>
+    <span class="tick-item"><span class="tick-dot"></span>Enterprise Chatbots</span>
+    <span class="tick-item"><span class="tick-dot"></span>Data Pipeline AI</span>
+    <span class="tick-item"><span class="tick-dot"></span>AI Governance</span>
+    <span class="tick-item"><span class="tick-dot"></span>Production ML Deployment</span>
+    <span class="tick-item"><span class="tick-dot"></span>Agent Observability</span>
+    <span class="tick-item"><span class="tick-dot"></span>Multi-Agent Orchestration</span>
+    <span class="tick-item"><span class="tick-dot"></span>RAG Systems</span>
+    <span class="tick-item"><span class="tick-dot"></span>Agentic Workflow Automation</span>
+    <span class="tick-item"><span class="tick-dot"></span>LLM Engineering</span>
+    <span class="tick-item"><span class="tick-dot"></span>AI Copilots</span>
+    <span class="tick-item"><span class="tick-dot"></span>Enterprise Chatbots</span>
+    <span class="tick-item"><span class="tick-dot"></span>Data Pipeline AI</span>
+    <span class="tick-item"><span class="tick-dot"></span>AI Governance</span>
+    <span class="tick-item"><span class="tick-dot"></span>Production ML Deployment</span>
+    <span class="tick-item"><span class="tick-dot"></span>Agent Observability</span>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section class="video-section" id="video">
+  <div class="video-inner">
+    <div class="reveal">
+      <span class="video-label">See it in action</span>
+      <h2 class="video-title">Watch an AI agent <span style="background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent">autonomously work</span></h2>
+      <p class="video-sub">From receiving a task to completing a multi-step workflow — see how our agents reason, act, and deliver results without human intervention.</p>
+    </div>
+    <div class="video-container reveal" id="videoContainer">
+      <canvas class="video-canvas" id="videoCanvas"></canvas>
+      <div class="video-overlay" id="videoOverlay">
+        <div class="play-btn" id="playBtn">
+          <div class="play-icon"></div>
+        </div>
+        <p class="video-caption">Agent Demo: Autonomous Data Processing Pipeline</p>
+      </div>
+    </div>
+    <div class="video-stats reveal">
+      <div class="vstat"><div class="vstat-num">79%</div><div class="vstat-label">Orgs with some agentic AI adoption</div></div>
+      <div class="vstat"><div class="vstat-num">40%</div><div class="vstat-label">Reduction in operational overhead</div></div>
+      <div class="vstat"><div class="vstat-num">22x</div><div class="vstat-label">Growth in customer service agents</div></div>
+      <div class="vstat"><div class="vstat-num">3x</div><div class="vstat-label">Average ROI in 12 months</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <span class="section-tag reveal">What we build</span>
+    <h2 class="section-title reveal">The 6 agentic AI services <br>CTOs are buying right now</h2>
+    <p class="section-sub reveal">Based on 2026 enterprise demand data — these are the highest-ROI AI agent deployments we deliver.</p>
+    <div class="services-grid">
+      <div class="svc svc-featured reveal">
+        <span class="svc-icon">🕸️</span>
+        <span class="svc-badge hot">🔥 Most Requested</span>
+        <h3>Multi-Agent Orchestration</h3>
+        <p>Deploy networks of specialized AI agents that collaborate, share context, and execute complex enterprise workflows end-to-end — across CRM, ERP, ITSM, and your data stack. <em>This is what Gartner says 40% of enterprise apps will have by year-end.</em></p>
+        <div class="svc-tags"><span class="tag">CrewAI</span><span class="tag">AutoGen</span><span class="tag">LangGraph</span><span class="tag">MCP</span></div>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">🔍</span>
+        <span class="svc-badge rising">↑ Fast Growing</span>
+        <h3>RAG Systems & Knowledge Agents</h3>
+        <p>Enterprise RAG pipelines that let agents securely retrieve, reason over, and act on your internal knowledge — documents, databases, APIs — in real time.</p>
+        <div class="svc-tags"><span class="tag">LlamaIndex</span><span class="tag">Pinecone</span><span class="tag">Azure AI Search</span></div>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">⚡</span>
+        <span class="svc-badge hot">🔥 High Demand</span>
+        <h3>Agentic Workflow Automation</h3>
+        <p>Autonomous agents that handle IT tickets, HR requests, finance approvals, and sales ops — reducing manual handoffs by up to 85% and running 24/7.</p>
+        <div class="svc-tags"><span class="tag">n8n</span><span class="tag">Zapier Agents</span><span class="tag">Python</span></div>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">💬</span>
+        <span class="svc-badge core">Core Service</span>
+        <h3>AI Copilots & Enterprise Chatbots</h3>
+        <p>Context-aware AI assistants embedded in your workflows — Slack, Teams, CRM, internal portals. Handles requests, retrieves knowledge, and escalates intelligently.</p>
+        <div class="svc-tags"><span class="tag">Claude API</span><span class="tag">GPT-4o</span><span class="tag">Teams</span><span class="tag">Slack</span></div>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">📐</span>
+        <span class="svc-badge core">Core Service</span>
+        <h3>AI Strategy & Agent Roadmap</h3>
+        <p>A prioritised, board-ready agentic AI strategy — identifying the highest-ROI workflows, designing the agent architecture, and mapping the path to production.</p>
+        <div class="svc-tags"><span class="tag">For CEOs</span><span class="tag">For CTOs</span><span class="tag">For Boards</span></div>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">🛡️</span>
+        <span class="svc-badge rising">↑ Regulatory Push</span>
+        <h3>AI Governance & Agent Observability</h3>
+        <p>Permissions maps, escalation logic, audit trails, and continuous evaluation — so your agents run safely in production under real compliance constraints.</p>
+        <div class="svc-tags"><span class="tag">EU AI Act</span><span class="tag">Red-teaming</span><span class="tag">Monitoring</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="how" id="process">
+  <div class="section-inner">
+    <span class="section-tag reveal">How we work</span>
+    <h2 class="section-title reveal">From brief to <span style="background:linear-gradient(120deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent">autonomous</span></h2>
+    <p class="section-sub reveal">A focused 4-step process that ships production-grade agents — not prototypes.</p>
+    <div class="process-grid">
+      <div class="process-line"></div>
+      <div class="pstep reveal">
+        <div class="pstep-num"><div class="pstep-num-text">01</div></div>
+        <h4>Agent Discovery</h4>
+        <p>Map your workflows, data sources, and systems to identify the highest-impact agentic opportunities.</p>
+      </div>
+      <div class="pstep reveal reveal-delay-1">
+        <div class="pstep-num"><div class="pstep-num-text">02</div></div>
+        <h4>Architecture Design</h4>
+        <p>Define agent roles, tools, memory, orchestration logic, and governance framework before a single line of code.</p>
+      </div>
+      <div class="pstep reveal reveal-delay-2">
+        <div class="pstep-num"><div class="pstep-num-text">03</div></div>
+        <h4>Build & Evaluate</h4>
+        <p>Engineers build, red-team, and evaluate agents against reproducible test runs — no demos, only production evidence.</p>
+      </div>
+      <div class="pstep reveal reveal-delay-3">
+        <div class="pstep-num"><div class="pstep-num-text">04</div></div>
+        <h4>Deploy & Scale</h4>
+        <p>Live deployment with observability, continuous improvement, and ongoing support as agents evolve with your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients-section">
+  <div class="section-inner">
+    <p class="clients-label reveal">Companies that trust Bytolix with their AI transformation</p>
+    <div class="clients-row reveal">
+      <a href="https://zarinzen.com" target="_blank" rel="noopener" class="client-pill">
+        <div class="cpill-icon" style="background:#2C2420;color:#C9A96E">Z</div>
+        Zari & Zen
+      </a>
+      <div class="client-pill">
+        <div class="cpill-icon" style="background:#0a1628;color:#38BDF8">F</div>
+        Flowkon
+      </div>
+      <div class="client-pill">
+        <div class="cpill-icon" style="background:#0f1a0f;color:#34D399">H</div>
+        HFT Bot
+      </div>
+      <div class="client-pill">
+        <div class="cpill-icon" style="background:#1a1a2e;color:#818CF8">D</div>
+        DataCorp
+      </div>
+      <div class="client-pill">
+        <div class="cpill-icon" style="background:#1a1208;color:#FBBF24">E</div>
+        EdgeAI Labs
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <span class="section-tag reveal">Client results</span>
+    <h2 class="section-title reveal">Built for leaders who ship</h2>
+    <div class="tgrid">
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">Bytolix didn't just consult — they embedded engineers who actually shipped autonomous agents into our e-commerce ops. Our Google Merchant Center is now fully compliant, our product data stays in sync, and AI handles customer support escalations end-to-end.</p>
+        <div class="tauthor">
+          <div class="tavatar" style="background:#2C2420;color:#C9A96E">ZZ</div>
+          <div><div class="tname">Founder, Zari & Zen</div><div class="trole">Luxury Indian Saree E-commerce</div></div>
+          <a href="https://zarinzen.com" target="_blank" rel="noopener" class="tlink">zarinzen.com ↗</a>
+        </div>
+      </div>
+      <div class="tcard reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">We needed multi-agent orchestration for our LinkedIn outreach automation. Bytolix designed the agent architecture, built the pipeline, and it's been running in production for 6 months. Campaign performance up 3x.</p>
+        <div class="tauthor">
+          <div class="tavatar" style="background:#0a1628;color:#38BDF8">FK</div>
+          <div><div class="tname">CTO, Flowkon</div><div class="trole">B2B Outreach Automation SaaS</div></div>
+          <span class="tlink">flowkon.io</span>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">Their RAG system gave our analysts instant access to 10 years of internal research. What took 3 days now takes 3 minutes. The governance framework they built gives our compliance team full audit trails.</p>
+        <div class="tauthor">
+          <div class="tavatar" style="background:#1a1a2e;color:#818CF8">AL</div>
+          <div><div class="tname">Head of Data, AlphaLogic</div><div class="trole">Enterprise Analytics Platform</div></div>
+          <span class="tlink">alphalogic.io</span>
+        </div>
+      </div>
+      <div class="tcard reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">Bytolix built our HFT signal processing agent — millions of events per second, sub-millisecond decision latency. They understood the domain deeply and shipped on time. Exceptional systems engineering.</p>
+        <div class="tauthor">
+          <div class="tavatar" style="background:#0f1a0f;color:#34D399">HB</div>
+          <div><div class="tname">Head of Technology, HFT Bot</div><div class="trole">Algorithmic Trading Infrastructure</div></div>
+          <span class="tlink">hft-bot.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-box reveal">
+    <span class="section-tag" style="display:block;margin-bottom:1rem">Get started</span>
+    <h2>Your first agent could be<br><span style="background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent">live in 2 weeks.</span></h2>
+    <p>Book a free 30-minute call. We'll identify the one agentic workflow that will move your business the most — and show you exactly how we'd build it.</p>
+    <div class="cta-form">
+      <input class="cta-input" type="email" placeholder="your@company.com">
+      <a href="mailto:hello@bytolix.com" class="btn-primary"><span>Book a call →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">Bytolix</div>
+      <p>Agentic AI services for enterprise leaders who want agents in production — not in a deck.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">Multi-Agent Orchestration</a>
+      <a href="#services">RAG Systems</a>
+      <a href="#services">Agentic Automation</a>
+      <a href="#services">AI Copilots</a>
+      <a href="#services">AI Governance</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#clients">Clients</a>
+      <a href="mailto:hello@bytolix.com">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Clients</h5>
+      <a href="https://zarinzen.com" target="_blank" rel="noopener">Zari & Zen ↗</a>
+      <a href="#">Flowkon</a>
+      <a href="#">HFT Bot</a>
+      <a href="#">AlphaLogic</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Bytolix. All rights reserved.</p>
+    <p>hello@bytolix.com · bytolix.com</p>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx-5+'px';cursor.style.top=my-5+'px';ring.style.left=mx-18+'px';ring.style.top=my-18+'px';});
+document.querySelectorAll('a,button,.svc,.tcard').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';ring.style.borderColor='rgba(56,189,248,0.6)'});el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.borderColor='rgba(56,189,248,0.4)'})});
+
+// HERO CANVAS - Neural network animation
+const hc=document.getElementById('heroCanvas');
+const hctx=hc.getContext('2d');
+let nodes=[];
+function resizeHero(){hc.width=hc.offsetWidth;hc.height=hc.offsetHeight;initNodes();}
+function initNodes(){nodes=[];for(let i=0;i<60;i++){nodes.push({x:Math.random()*hc.width,y:Math.random()*hc.height,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,r:Math.random()*2+1});}}
+function drawHero(){
+  hctx.clearRect(0,0,hc.width,hc.height);
+  nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>hc.width)n.vx*=-1;if(n.y<0||n.y>hc.height)n.vy*=-1;});
+  for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){hctx.beginPath();hctx.strokeStyle=`rgba(56,189,248,${0.15*(1-d/120)})`;hctx.lineWidth=0.5;hctx.moveTo(nodes[i].x,nodes[i].y);hctx.lineTo(nodes[j].x,nodes[j].y);hctx.stroke();}}}
+  nodes.forEach(n=>{hctx.beginPath();hctx.arc(n.x,n.y,n.r,0,Math.PI*2);hctx.fillStyle='rgba(56,189,248,0.4)';hctx.fill();});
+  requestAnimationFrame(drawHero);
+}
+resizeHero();window.addEventListener('resize',resizeHero);drawHero();
+
+// VIDEO CANVAS - Animated agent demo
+const vc=document.getElementById('videoCanvas');
+const vctx=vc.getContext('2d');
+let vPlaying=false,vT=0;
+function resizeVideo(){vc.width=vc.offsetWidth;vc.height=vc.offsetHeight;}
+resizeVideo();window.addEventListener('resize',resizeVideo);
+
+const steps=[
+  {t:0,label:'Receiving task: "Analyze Q1 sales data and generate report"',color:'#38BDF8',icon:'📥'},
+  {t:80,label:'Agent planning: Breaking into 3 sub-tasks...',color:'#818CF8',icon:'🧠'},
+  {t:160,label:'Sub-agent 1: Querying database → 12,483 records retrieved',color:'#34D399',icon:'🔍'},
+  {t:240,label:'Sub-agent 2: Running analysis → Identifying trends...',color:'#FBBF24',icon:'📊'},
+  {t:320,label:'Sub-agent 3: Generating executive summary...',color:'#38BDF8',icon:'✍️'},
+  {t:400,label:'Orchestrator: Merging outputs → Quality check passed ✓',color:'#34D399',icon:'🔗'},
+  {t:480,label:'Task complete: Report delivered to CEO dashboard in 8.2s',color:'#818CF8',icon:'✅'},
+];
+
+function drawVideo(){
+  if(!vPlaying)return;
+  vctx.clearRect(0,0,vc.width,vc.height);
+  vT++;
+  const W=vc.width,H=vc.height;
+
+  // BG
+  vctx.fillStyle='#080C16';vctx.fillRect(0,0,W,H);
+
+  // Grid
+  vctx.strokeStyle='rgba(56,189,248,0.05)';vctx.lineWidth=1;
+  for(let x=0;x<W;x+=40){vctx.beginPath();vctx.moveTo(x,0);vctx.lineTo(x,H);vctx.stroke();}
+  for(let y=0;y<H;y+=40){vctx.beginPath();vctx.moveTo(0,y);vctx.lineTo(W,y);vctx.stroke();}
+
+  // Title
+  vctx.font=`bold ${Math.min(16,W*0.02)}px Cabinet Grotesk,sans-serif`;
+  vctx.fillStyle='rgba(56,189,248,0.6)';
+  vctx.fillText('BYTOLIX AGENT RUNTIME — LIVE EXECUTION',20,30);
+
+  // Timeline
+  const loopT=vT%560;
+  const activeStep=steps.filter(s=>s.t<=loopT).pop()||steps[0];
+  const stepIdx=steps.indexOf(activeStep);
+
+  steps.forEach((s,i)=>{
+    const x=20+i*(W-40)/6.5;
+    const active=i===stepIdx;
+    const done=i<stepIdx;
+    vctx.beginPath();
+    vctx.arc(x,H*0.75,active?8:5,0,Math.PI*2);
+    vctx.fillStyle=done?'#34D399':active?s.color:'rgba(99,120,150,0.4)';
+    vctx.fill();
+    if(i<steps.length-1){
+      vctx.beginPath();
+      vctx.strokeStyle=done?'rgba(52,211,153,0.5)':'rgba(99,120,150,0.2)';
+      vctx.lineWidth=1;
+      const nx=20+(i+1)*(W-40)/6.5;
+      vctx.moveTo(x+8,H*0.75);vctx.lineTo(nx-8,H*0.75);vctx.stroke();
+    }
+  });
+
+  // Active step label
+  const progress=(loopT-activeStep.t)/80;
+  vctx.font=`500 ${Math.min(14,W*0.018)}px Instrument Sans,sans-serif`;
+  vctx.fillStyle=activeStep.color;
+  vctx.globalAlpha=Math.min(1,progress*2);
+  vctx.fillText(activeStep.icon+' '+activeStep.label,20,H*0.75+40);
+  vctx.globalAlpha=1;
+
+  // Pulsing agent node
+  const pulse=Math.sin(vT*0.08)*10;
+  vctx.beginPath();
+  vctx.arc(W*0.5,H*0.35,30+pulse,0,Math.PI*2);
+  vctx.fillStyle='rgba(56,189,248,0.05)';vctx.fill();
+  vctx.strokeStyle='rgba(56,189,248,0.3)';vctx.lineWidth=1;vctx.stroke();
+  vctx.beginPath();
+  vctx.arc(W*0.5,H*0.35,20,0,Math.PI*2);
+  vctx.fillStyle='rgba(56,189,248,0.15)';vctx.fill();
+  vctx.strokeStyle='rgba(56,189,248,0.6)';vctx.lineWidth=2;vctx.stroke();
+  vctx.font=`22px sans-serif`;
+  vctx.textAlign='center';
+  vctx.fillText('🤖',W*0.5,H*0.35+7);
+  vctx.textAlign='left';
+
+  // Data lines
+  for(let i=0;i<4;i++){
+    const angle=(vT*0.03+i*Math.PI*0.5);
+    const sx=W*0.5+Math.cos(angle)*80;
+    const sy=H*0.35+Math.sin(angle)*80;
+    const ex=W*0.5+Math.cos(angle)*120;
+    const ey=H*0.35+Math.sin(angle)*120;
+    const alpha=(Math.sin(vT*0.05+i)*0.5+0.5)*0.4;
+    vctx.beginPath();
+    vctx.strokeStyle=`rgba(56,189,248,${alpha})`;
+    vctx.lineWidth=1;
+    vctx.moveTo(sx,sy);vctx.lineTo(ex,ey);vctx.stroke();
+  }
+
+  // Timer
+  vctx.font=`bold ${Math.min(12,W*0.015)}px Cabinet Grotesk,sans-serif`;
+  vctx.fillStyle='rgba(107,122,153,0.8)';
+  vctx.fillText(`ELAPSED: ${(vT*0.016).toFixed(1)}s`,W-120,20);
+
+  requestAnimationFrame(drawVideo);
+}
+
+document.getElementById('playBtn').addEventListener('click',()=>{
+  vPlaying=true;
+  document.getElementById('videoOverlay').classList.add('hidden');
+  drawVideo();
+});
+
+// SCROLL REVEAL
+const revealEls=document.querySelectorAll('.reveal');
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>revObs.observe(el));
+</script>
+</body>
+</html>
