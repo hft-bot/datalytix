@@ -34,7 +34,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--void);color:var(--white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;cursor:none}
-a{text-decoration:none;color:inherit}
+a{text-decoration:none!important;color:inherit}
+a:hover,a:focus,a:visited{text-decoration:none!important}
 
 /* CURSOR */
 .cursor{position:fixed;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.1s;mix-blend-mode:screen}
@@ -286,7 +287,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
     <a href="#process">Process</a>
     <a href="theme/blog.html">Blog</a>
     <a href="theme/about.html">About</a>
-    <a href="#contact" class="nav-cta">Book a call →</a>
+    <a href="https://calendly.com/bytolix-support/30min" target="_blank" rel="noopener" class="nav-cta">Book a call →</a>
   </div>
   <!-- Mobile hamburger -->
   <button id="mob-btn" onclick="document.getElementById('mob-menu').classList.toggle('open')" style="display:none;flex-direction:column;gap:5px;background:none;border:1px solid var(--border);border-radius:8px;padding:8px;cursor:pointer">
@@ -302,7 +303,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
   <a href="theme/blog.html" style="display:block;padding:10px 14px;font-size:14px;color:var(--muted);border-radius:8px">Blog</a>
   <a href="theme/about.html" style="display:block;padding:10px 14px;font-size:14px;color:var(--muted);border-radius:8px">About</a>
   <a href="theme/pricing.html" style="display:block;padding:10px 14px;font-size:14px;color:var(--muted);border-radius:8px">Pricing</a>
-  <a href="#contact" style="display:block;padding:10px 14px;font-size:14px;color:var(--cyan);font-weight:600;border-radius:8px">Book a Call →</a>
+  <a href="https://calendly.com/bytolix-support/30min" target="_blank" rel="noopener" style="display:block;padding:10px 14px;font-size:14px;color:var(--cyan);font-weight:600;border-radius:8px">Book a Call →</a>
 </div>
 <style>
 @media(max-width:960px){
@@ -325,7 +326,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
       </h1>
       <p class="hero-sub">We design, build, and deploy AI agents that work autonomously inside your enterprise — orchestrating workflows, processing data, and making decisions while your team sleeps.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary"><span>Deploy your first agent →</span></a>
+        <a href="https://calendly.com/bytolix-support/30min" target="_blank" rel="noopener" class="btn-primary"><span>Deploy your first agent →</span></a>
         <a href="#video" class="btn-secondary">Watch it work</a>
       </div>
     </div>
