@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Bytolix</title>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="styles/dark-theme.css">
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+
+<nav class="site-nav">
+  <a class="nav-logo" href="../index.html"><img src="bytolix-logo.png" alt="Bytolix"><span>Bytolix</span></a>
+  <ul class="nav-menu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Call →</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<section style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 2rem;position:relative;z-index:1;background:rgba(8,12,22,0.85)">
+  <div style="text-align:center;max-width:500px" class="reveal">
+    <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 2rem">✓</div>
+    <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.5px;margin-bottom:1rem;background:linear-gradient(120deg,var(--white),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Thank You!</h1>
+    <p style="font-size:17px;color:var(--light);line-height:1.7;margin-bottom:0.75rem">Your message has been received successfully.</p>
+    <p style="font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:2.5rem">We'll be in touch within one business day. If you have an urgent question, email us at <a href="mailto:hello@bytolix.com" style="color:var(--cyan)">hello@bytolix.com</a> or message us on WhatsApp.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="../index.html" class="btn-primary"><span>Back to Home →</span></a>
+      <a href="blog.html" class="btn-secondary">Read Our Blog</a>
+    </div>
+  </div>
+</section>
+
+<script src="scripts/dark-theme.js"></script>
+</body>
+</html>

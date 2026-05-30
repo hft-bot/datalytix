@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Bytolix</title>
+<meta name="description" content="Bytolix builds and deploys autonomous AI agents for enterprise — a team of ML engineers, data scientists, and AI architects transforming how businesses operate.">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="styles/dark-theme.css">
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<a href="https://wa.me/918553578264?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Bytolix%20AI%20services" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat with us</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav class="site-nav">
+  <a class="nav-logo" href="../index.html">
+    <img src="bytolix-logo.png" alt="Bytolix">
+    <span>Bytolix</span>
+  </a>
+  <ul class="nav-menu">
+    <li><a href="../index.html">Home</a></li>
+    <li>
+      <span>Services <svg class="nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l4 4 4-4"/></svg></span>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Our Services</span>
+        <a href="services/agentic-workflow-automation.html">Agentic Workflow Automation</a>
+        <a href="services/ai-copilots.html">AI Copilots</a>
+        <a href="services/ai-governance.html">AI Governance</a>
+        <a href="services/ai-strategy.html">AI Strategy</a>
+        <a href="services/multi-agent-orchestration.html">Multi-Agent Orchestration</a>
+        <a href="services/rag-systems.html">RAG Systems</a>
+      </div>
+    </li>
+    <li>
+      <span>Use Cases <svg class="nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l4 4 4-4"/></svg></span>
+      <div class="nav-dropdown">
+        <a href="use-cases/finance.html">Finance &amp; Banking</a>
+        <a href="use-cases/sales.html">Sales &amp; CRM</a>
+      </div>
+    </li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Call →</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="../index.html">Home</a>
+  <span class="mobile-section-label">Services</span>
+  <a href="services/agentic-workflow-automation.html">Agentic Workflow Automation</a>
+  <a href="services/ai-copilots.html">AI Copilots</a>
+  <a href="services/ai-governance.html">AI Governance</a>
+  <a href="services/ai-strategy.html">AI Strategy</a>
+  <a href="services/multi-agent-orchestration.html">Multi-Agent Orchestration</a>
+  <a href="services/rag-systems.html">RAG Systems</a>
+  <span class="mobile-section-label">Use Cases</span>
+  <a href="use-cases/finance.html">Finance &amp; Banking</a>
+  <a href="use-cases/sales.html">Sales &amp; CRM</a>
+  <span class="mobile-section-label">Company</span>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" style="color:var(--cyan);font-weight:600;margin-top:0.5rem">Book a Call →</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background:rgba(8,12,22,0.85)">
+  <div class="page-hero-inner reveal">
+    <div class="page-eyebrow"><span class="blink" style="display:inline-block;width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 1.2s ease-in-out infinite"></span> Our Story</div>
+    <h1>Built by AI engineers.<br><span class="grad">Obsessed with outcomes.</span></h1>
+    <p>Bytolix designs next-generation AI agents that adapt to your business. Our expertise spans LLM engineering, MLOps, and multi-agent orchestration — building scalable, production-ready systems that drive measurable impact.</p>
+  </div>
+</section>
+<style>@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}</style>
+
+<!-- STATS -->
+<section class="section" style="padding-top:0;background:rgba(4,5,10,0.85)">
+  <div class="section-inner">
+    <div class="stats-row">
+      <div class="stat-card reveal"><div class="stat-val">50+</div><div class="stat-label">Enterprise Clients</div></div>
+      <div class="stat-card reveal reveal-delay-1"><div class="stat-val">200+</div><div class="stat-label">AI Agents Deployed</div></div>
+      <div class="stat-card reveal reveal-delay-2"><div class="stat-val">12</div><div class="stat-label">Countries Served</div></div>
+      <div class="stat-card reveal reveal-delay-3"><div class="stat-val">98%</div><div class="stat-label">Client Retention</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section" style="background:rgba(8,12,22,0.85)">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+      <div class="reveal">
+        <span class="section-tag">Our Mission</span>
+        <h2 class="section-title">Empowering B2B growth with AI-first systems</h2>
+        <p style="font-size:16px;color:var(--light);line-height:1.75;margin-bottom:1.5rem">From intelligent automation to real-time agentic pipelines, we empower enterprise teams to accelerate their AI journey with speed, precision, and agility.</p>
+        <p style="font-size:16px;color:var(--light);line-height:1.75">Bytolix isn't just about technology — it's about helping you transform data into growth and automation into competitive advantage.</p>
+      </div>
+      <div class="reveal reveal-delay-1" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="card-dark" style="grid-column:span 2">
+          <span class="card-icon">🚀</span>
+          <h3>Speed to Production</h3>
+          <p>From scoping to live agents in 4–6 weeks. We've built the playbook so your team doesn't have to.</p>
+        </div>
+        <div class="card-dark">
+          <span class="card-icon">🔒</span>
+          <h3>Enterprise-Grade Security</h3>
+          <p>SOC2-aligned, air-gapped deployment options, RBAC throughout.</p>
+        </div>
+        <div class="card-dark">
+          <span class="card-icon">📊</span>
+          <h3>Measurable ROI</h3>
+          <p>Every engagement scoped with clear KPIs and success metrics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section" style="background:rgba(4,5,10,0.85)">
+  <div class="section-inner">
+    <div class="section-center reveal">
+      <span class="section-tag">How We Work</span>
+      <h2 class="section-title">Six AI-first principles guiding everything we build</h2>
+    </div>
+    <div class="grid-3" style="margin-top:3rem">
+      <div class="card-dark reveal">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">01</div>
+        <h3>AI-Powered Innovation</h3>
+        <p>We embed AI into every layer — from workflow creation to predictive analytics — so your systems adapt and stay ahead of shifting demands.</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-1">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">02</div>
+        <h3>User-Centric Experience</h3>
+        <p>Every feature is designed to fit your workflow and maximize measurable outcomes. If it's not usable, it's not shipped.</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-2">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">03</div>
+        <h3>Applied Expertise</h3>
+        <p>Our ML engineers and AI architects bring proven knowledge to solve real enterprise challenges at scale.</p>
+      </div>
+      <div class="card-dark reveal">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">04</div>
+        <h3>Scalable Automation</h3>
+        <p>Our systems handle thousands of parallel agent interactions effortlessly — ensuring compliance, precision, and reliability as you grow.</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-1">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">05</div>
+        <h3>Explainable Intelligence</h3>
+        <p>Every agent decision is traceable and transparent. You're always in control of how AI works for your business.</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-2">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem">06</div>
+        <h3>Continuous Optimization</h3>
+        <p>We constantly refine models and agent logic using live performance data — driving better outcomes across all deployments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" style="background:rgba(8,12,22,0.85)">
+  <div class="section-inner">
+    <div class="section-center reveal">
+      <span class="section-tag">The Team</span>
+      <h2 class="section-title">Minds behind Bytolix</h2>
+      <p class="section-sub">A diverse group of AI engineers, data scientists, and innovators building the future of autonomous systems.</p>
+    </div>
+    <div class="grid-3" style="margin-top:3rem;max-width:860px;margin-left:auto;margin-right:auto">
+      <div class="card-dark reveal" style="text-align:center">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1rem">👨‍💻</div>
+        <h3 style="font-size:17px">Mason Bennett</h3>
+        <p style="color:var(--cyan);font-size:12px;margin-top:4px">Machine Learning Engineer</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-1" style="text-align:center">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1rem">👨‍🔬</div>
+        <h3 style="font-size:17px">Noah Thompson</h3>
+        <p style="color:var(--cyan);font-size:12px;margin-top:4px">Data Scientist</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-2" style="text-align:center">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1rem">👩‍💻</div>
+        <h3 style="font-size:17px">Taylor Adams</h3>
+        <p style="color:var(--cyan);font-size:12px;margin-top:4px">Data Scientist</p>
+      </div>
+      <div class="card-dark reveal" style="text-align:center">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1rem">👩‍🔧</div>
+        <h3 style="font-size:17px">Ava Richardson</h3>
+        <p style="color:var(--cyan);font-size:12px;margin-top:4px">Data Engineer</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-1" style="text-align:center">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1rem">👨‍🔧</div>
+        <h3 style="font-size:17px">Liam Carter</h3>
+        <p style="color:var(--cyan);font-size:12px;margin-top:4px">Data Engineer</p>
+      </div>
+      <div class="card-dark reveal reveal-delay-2" style="text-align:center">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--cyan-dim),var(--violet-dim));border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1rem">🤖</div>
+        <h3 style="font-size:17px">Join the Team</h3>
+        <p style="color:var(--cyan);font-size:12px;margin-top:4px"><a href="career.html" style="color:var(--cyan)">View Open Roles →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" style="background:rgba(4,5,10,0.85)">
+  <div class="cta-bg"></div>
+  <div class="cta-box reveal">
+    <span class="section-tag" style="display:block;text-align:center;margin-bottom:1rem">Work With Us</span>
+    <h2>Ready to build your<br><span style="background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent">AI-first enterprise?</span></h2>
+    <p>Let's talk about what autonomous agents can do for your specific operations.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn-primary"><span>Book a Discovery Call</span></a>
+      <a href="services/rag-systems.html" class="btn-secondary">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="bytolix-logo.png" alt="Bytolix"><span>Bytolix</span></div>
+      <p>Building autonomous AI agents that work for your enterprise 24/7 — from strategy to production.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="services/agentic-workflow-automation.html">Agentic Workflows</a>
+      <a href="services/ai-copilots.html">AI Copilots</a>
+      <a href="services/ai-governance.html">AI Governance</a>
+      <a href="services/multi-agent-orchestration.html">Multi-Agent</a>
+      <a href="services/rag-systems.html">RAG Systems</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="about.html">About Us</a>
+      <a href="blog.html">Blog</a>
+      <a href="career.html">Careers</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-condition.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Bytolix. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="Twitter">𝕏</a>
+    </div>
+  </div>
+</footer>
+<script src="scripts/dark-theme.js"></script>
+</body>
+</html>

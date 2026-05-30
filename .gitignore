@@ -8,8 +8,8 @@
 yarn.lock
 package-lock.json
 
-# production
-/theme
+# production — theme/ tracked (dark theme redesign)
+# /theme
 
 # misc
 .DS_Store
