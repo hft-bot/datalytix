@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# install dependencies
-echo "Installing dependencies..."
-npm install
-
-# generate demo
-echo "Generating demo site..."
-npm run deploy
+# Dark theme redesign — serve pre-built theme/ files directly, no gulp rebuild
+echo "Skipping gulp build — serving committed theme/ files"
+exit 0
