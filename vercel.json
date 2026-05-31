@@ -1,18 +1,9 @@
 {
-  "builds": [
-    {
-      "src": "vercel-build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "theme"
-      }
-    },
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxDuration": 30
-      }
+  "buildCommand": "echo 'No build needed'",
+  "outputDirectory": "theme",
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 30
     }
-  ]
+  }
 }
