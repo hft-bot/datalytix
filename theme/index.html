@@ -245,7 +245,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
     <a href="#video">See it work</a>
     <a href="#process">Process</a>
     <a href="#clients">Clients</a>
-    <a href="#contact" class="nav-cta">Book a call →</a>
+    <a href="https://calendly.com/bytolix-support/30min" target="_blank" rel="noopener" class="nav-cta">Book a call →</a>
   </div>
 </nav>
 
@@ -511,7 +511,7 @@ footer{padding:3rem;border-top:1px solid var(--border);background:rgba(8,12,22,0
     <p>Book a free 30-minute call. We'll identify the one agentic workflow that will move your business the most — and show you exactly how we'd build it.</p>
     <div class="cta-form">
       <input class="cta-input" type="email" placeholder="your@company.com">
-      <a href="mailto:hello@bytolix.com" class="btn-primary"><span>Book a call →</span></a>
+      <a href="https://calendly.com/bytolix-support/30min" target="_blank" rel="noopener" class="btn-primary"><span>Book a call →</span></a>
     </div>
   </div>
 </section>
@@ -688,5 +688,6 @@ const revealEls=document.querySelectorAll('.reveal');
 const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 revealEls.forEach(el=>revObs.observe(el));
 </script>
+<script src="scripts/chat.js"></script>
 </body>
 </html>
